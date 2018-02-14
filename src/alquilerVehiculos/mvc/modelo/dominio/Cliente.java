@@ -45,15 +45,6 @@ public class Cliente {
 
 	// metodo Asignar NuevoIdentificador
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Cliente [nombre=" + nombre + ", dni=" + dni + ", identificador=" + identificador + ", direccionPostal="
-				+ direccionPostal + "]";
-	}
-
 	private void asignarNuevoIdentificador() {
 		identificador = ultimoIdentificador++;
 	}
@@ -100,15 +91,18 @@ public class Cliente {
 	 * @param nombre
 	 *            the nombre to set
 	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	private void setNombre(String nombre) {
+		if (nombre != null && !nombre.equals(" "))
+			this.nombre = nombre;
+		else
+			throw new ExcepcionAlquilerVehiculos("EL NOMBRE NO PUEDE ESTAR VACIO");
 	}
 
 	/**
 	 * @param dni
 	 *            the dni to set
 	 */
-	public void setDni(String dni) {
+	private void setDni(String dni) {
 		if (compruebaDni(dni))
 			this.dni = dni;
 		else
@@ -120,7 +114,7 @@ public class Cliente {
 	 *            the identificador to set
 	 */
 	public void setIdentificador(int identificador) {
-		
+
 		this.identificador = identificador;
 	}
 
@@ -144,7 +138,7 @@ public class Cliente {
 
 	private static boolean compruebaDni(String dni) {
 		boolean dniValidado = false; // declara variable que contendra valor emparejador.matches
-		
+
 		Pattern dniPatron = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");/* expresionRegular */
 		Matcher emparejador = dniPatron.matcher((dni));
 		dniValidado = emparejador.matches(); // se guarda el resultado del metodo emparejador.matches en una variable
@@ -152,7 +146,15 @@ public class Cliente {
 
 	}
 
-	
-	
-	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", dni=" + dni + ", identificador=" + identificador + ", direccionPostal="
+				+ direccionPostal + "]";
+	}
+
 }
