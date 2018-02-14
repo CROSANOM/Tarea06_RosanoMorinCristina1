@@ -1,5 +1,4 @@
-package tarea05;
-
+package alquilerVehiculos.mvc.modelo.dominio;
 import java.text.SimpleDateFormat;
 import java.util.Date;// instanciar la clase Fecha y acceder a sus metodos
 

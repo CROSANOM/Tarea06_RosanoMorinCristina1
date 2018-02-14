@@ -1,6 +1,13 @@
-package tarea05;
+package alquilerVehiculos.aplicacion;
 
-import utilidades.Entrada;
+import alquilerVehiculos.mvc.modelo.AlquilerVehiculos;
+import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
+import alquilerVehiculos.mvc.modelo.dominio.Cliente;
+import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
+import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import alquilerVehiculos.mvc.modelo.dominio.Turismo;
+import alquilerVehiculos.mvc.vista.utilidades.Entrada;
+import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 
 public class Principal {
 
@@ -10,74 +17,13 @@ public class Principal {
 	public static void main(String[] args) {
 
 		// instanciar la clase AlquilerVehiculos
-		AlquilerVehiculos miAlquiler = new AlquilerVehiculos();
-
-		// 1º Creamos y añadimos clientes- turismo - alquiler //
-
-		/*
-		 * CLIENTE: creamos objetos de cliente(String nombre, String dni, String
-		 * direccion, String localidad, String codigoPostal)
-		 */
-		System.out.println(" Objetos cliente: ");
-		Cliente cliente1 = new Cliente("Manolo Santander", "75875453V", "calle popurri", "Tarifa­", "11380");
-		Cliente cliente2 = new Cliente("Antonio Martin", "75875452V", "calle Manuel de Falla", "Cadiz", "04002");
-		Cliente cliente3 = new Cliente("Luis Rivero", "75875458R", "calle Juana La Loca", "Chipiona", "04008");
-		Cliente cliente4 = new Cliente("Paco Alba", "75875452R", "calle pasodoble", "Chipiona", "04008");
-		// mostramos el cliente1 por pantalla con el metodoToString
-		System.out.println("Mostramos por pantalla el cliente1 " + cliente1.toString());
-		System.out.println("Mostramos por pantalla el cliente2 " + cliente2.toString());
-
-		// Añadimos los clientes 1 -2 - 4
-		miAlquiler.anadeCliente(cliente1);
-		miAlquiler.anadeCliente(cliente2);
-		miAlquiler.anadeCliente(cliente4);
-		miAlquiler.anadeCliente(cliente3);
-
-		/*
-		 * TURISMO: creamos un turismo (String matricula, String marca, String modelo,
-		 * int cilindrada)
-		 */
-		System.out.println(" Objetos de turismo ");
-		Turismo turismo1 = new Turismo("4444BBB", "Citroen", "Picaso", 1900);
-		Turismo turismo2 = new Turismo("2222BBB", "Renault", "Space", 1600);
-		Turismo turismo3 = new Turismo("4479BBB", "Citroen", "Picaso", 1900);
-		Turismo turismo4 = new Turismo("2278BBB", "Renault", "Space", 1600);
-		Turismo turismo5 = new Turismo("2278HBB", "Renault", "Space", 1600);
-		// mostramos ejemplo de objetos turismo por Pantalla con el metodoToString
-		System.out.println("turismo1" + turismo1.toString());
-		System.out.println("turismo2" + turismo2.toString());
-		System.out.println("turismo3" + turismo3.toString());
-		System.out.println("turismo4" + turismo2.toString());
-		System.out.println("turismo5" + turismo3.toString());
-
-		// añadimos los turismos 1-2-3-4
-		miAlquiler.anadeTurismo(turismo1);
-		miAlquiler.anadeTurismo(turismo2);
-		miAlquiler.anadeTurismo(turismo3);
-		miAlquiler.anadeTurismo(turismo4);
+		
+	AlquilerVehiculos miAlquiler = new AlquilerVehiculos();
+	DireccionPostal nPostal= new DireccionPostal("Calle","Localidad","04007");
 	
-
-		// COMPROBAR LA EXISTENCIA DE CLIENTES Y TURISMO EN LA APLICACION
-		System.out.println("La aplicacion tiene \n " + miAlquiler.toString());
-
-		/*
-		 * ALQUILER primero abrimos alquiler comprobar disponibilidad coche, despues
-		 * cerramos alquiler comprobamos cambio disponibilidad coche
-		 */
-
-		// Abrirmos un alquiler usar metodo abrirAlquiler si ok lanza msm */
-		miAlquiler.abrirAlquiler(cliente2, turismo2);
-		// Para comprobar que ok todo imprimir pantalla el alquiler
-		System.out.println("Imprime mi alquiler" + miAlquiler.toString());
-		System.out.println("Ahora el coche cambio de estado, su disponibilidad es  " + turismo2.isDisponibilidad());
-
-		// cerrar alquiler
-		miAlquiler.cerrarAlquiler(cliente2, turismo2);
-		// Para comprobar cambio disponibilidad coche
-		System.out.println("Imprime mi alquiler" + miAlquiler.toString());
-		System.out.println("Despues de cerrar alquiler turismo2 cambió de estado, su disponibilidad es  "
-				+ turismo2.isDisponibilidad());
-
+	Cliente cliente1=new Cliente ( "nombre", "75875453R", nPostal);
+	System.out.println(cliente1.toString());
+	
 		// for para recorrer y recuperar cliente, turismo y alquiler print cliente ,
 		// turismos, alquileres
 
@@ -95,19 +41,21 @@ public class Principal {
 
 		// do - while valida la entrada menu
 
+		
+		
+		
 		int opcion;
 		do {
 
 			// MENU
-
 			System.out.println("MENU DE LA APLICACION:");
 			System.out.println("/n");
 			System.out.println("Alquiler Vehiculos");
 			System.out.println("\n---------------");
-			System.out.println("1.- Añadir cliente");
+			System.out.println("1.- A�adir cliente");
 			System.out.println("2.- Borrar cliente");
 			System.out.println("3.- Listar clientes");
-			System.out.println("4.- Añadir ­Turismo");
+			System.out.println("4.- A�adir ­Turismo");
 			System.out.println("5.- Borrar Turismo");
 			System.out.println("6.- Listar Turismo");
 			System.out.println("7.- Abrir un Alquiler");
@@ -115,31 +63,42 @@ public class Principal {
 			System.out.println("9.- Listar alquiler");
 			System.out.println("0.- Salir");
 			do {
-				System.out.print("\nElige una opción (1-9) para salir pulsar 0: ");
+				System.out.print("\nElige una opci�n (1-9) para salir pulsar 0: ");
 				opcion = Entrada.entero();
 
 			} while (opcion < 0 || opcion > 9); // entra en bucle
 			switch (opcion) {
 
-			case 1: // Añadir cliente
+			case 1: // A�adir cliente
 				Cliente nuevoCliente = null;
 				do {
 
-					System.out.println("\nAñadir cliente");
+					System.out.println("\n a�adir DireccionPostal");
+					System.out.println("--------------");
+					System.out.print("Calle");
+					String callet1 = Entrada.cadena();
+					System.out.print("Localidad: ");
+					String localidadt1 = Entrada.cadena();
+					System.out.print("codigoPostal: ");
+					String codigoPostalt1 = Entrada.cadena();
+					
+					// instanciar un objeto direccionPostal con parametros leidos por teclado
+					DireccionPostal direccionPostalIntroducida1 = new DireccionPostal(callet1,
+							 localidadt1,codigoPostalt1);
+
+					System.out.println("AHORA VAMOS A VER LA DIRECCIONPOSTALINTRO"+ direccionPostalIntroducida1.toString());
+					
+					
+					System.out.println("\n a�adir cliente");
 					System.out.println("--------------");
 					System.out.print("Nombre: ");
 					String nombre = Entrada.cadena();
 					System.out.print("DNI: ");
 					String dni = Entrada.cadena();
-					System.out.print("Direccion: ");
-					String direccion = Entrada.cadena();
-					System.out.print("Localidad: ");
-					String localidad = Entrada.cadena();
-					System.out.print("Codigo postal: ");
-					String codigoPostal = Entrada.cadena();
-					// prueba añadir cliente
+
+					// prueba a�adir cliente
 					try {
-						nuevoCliente = new Cliente(nombre, dni, direccion, localidad, codigoPostal);
+						nuevoCliente = new Cliente(nombre, dni, direccionPostalIntroducida1);
 					} catch (ExcepcionAlquilerVehiculos e) {// si error
 						System.out.printf("ERROR: %s%n%n", e.getMessage());
 						System.out.println("Vuelve a introducir los datos de forma correcta");
@@ -175,7 +134,7 @@ public class Principal {
 				}
 				System.out.println("");
 				break;
-			case 4: // añadir turismo
+			case 4: // a�adir turismo
 				Turismo nuevoTurismo = null;
 				System.out.println("\nAñadir Turismo");
 				System.out.println("---------------");
@@ -225,8 +184,8 @@ public class Principal {
 				String matriculaBuscar = Entrada.cadena();
 				Turismo turismoBuscado = miAlquiler.getTurismo(matriculaBuscar);
 				System.out.println("\nIntroduce el dni");
-				String dni = Entrada.cadena();
-				Cliente cliente = miAlquiler.getCliente(dni);
+				String dni1 = Entrada.cadena();
+				Cliente cliente = miAlquiler.getCliente(dni1);
 
 				if (turismoBuscado == null)
 					System.out.println("ERROR: No existe un vehi­culo con dicha matricula\n");
@@ -277,6 +236,7 @@ public class Principal {
 			}// fin swich
 		} while (opcion != 0);
 
-	}
+		
+	} 
 
 }

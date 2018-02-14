@@ -1,105 +1,64 @@
-package tarea05;
+
+package alquilerVehiculos.mvc.modelo.dominio;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//Punto5  Crear la clase cliente con los atributos y visibilidad adecuados. 
-
 public class Cliente {
 
-	private String nombre, dni, direccion, localidad, codigoPostal;
+	// atributos
+	private String nombre;
+	private String dni;
 	private int identificador;
-	private static int numClientes = 0;
+	private static int ultimoIdentificador = 0;
+	private DireccionPostal direccionPostal;
 
-	// punto 6 ( Crear un constructor Cliente con cinco parámetros)
-	public Cliente(String nombre, String dni, String direccion, String localidad, String codigoPostal) {
+	// constructores
+	/*
+	 * constructor con 3 parametros inicializa los atributos a traves de llamada
+	 * metodos set
+	 */
 
-		boolean dniCorrecto = false;
-		boolean codigoCorrecto = false;
-
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.localidad = localidad;
-		
-		/* Comprobaciones de dni y de codigo postal */
-		dniCorrecto = compruebaDni(dni);
-		codigoCorrecto = compruebaCodigoPostal(codigoPostal);
-		// Comprobar dni o lanzar excepcion.
-		if (dniCorrecto) {
-			this.dni = dni;
-		} else
-			throw new ExcepcionAlquilerVehiculos("El dni no es correcto.");
-		// Comprobar codigo postal o lanzar excepción.
-		if (codigoCorrecto) {
-			this.codigoPostal = codigoPostal;
-
-		} else
-			throw new ExcepcionAlquilerVehiculos("El codigo postal no es correcto.");
-
-		if (this.dni != null && this.codigoPostal != null) {
-			// Contar nuevo cliente.
-			this.identificador = numClientes++;
-		}
+	/**
+	 * @param nombre
+	 * @param dni
+	 * @param direccionPostal
+	 */
+	public Cliente(String nombre, String dni, DireccionPostal direccionPostal) {
+		setNombre(nombre);
+		setDni(dni);
+		setDireccionPostal(direccionPostal);
+		asignarNuevoIdentificador();
 	}
 
-	// Punto 6 Crear constructor copia de Cliente
+	// constructor copia
 
+	/**
+	 * @param cliente
+	 */
 	public Cliente(Cliente cliente) {
-
-		identificador = cliente.getIdentificador();
 		nombre = cliente.getNombre();
 		dni = cliente.getDni();
-		direccion = cliente.getDireccion();
-		localidad = cliente.getLocalidad();
-		codigoPostal = cliente.getCodigoPostal();
-
+		direccionPostal = cliente.getDireccionPostal();
+		identificador = cliente.getIdentificador();
 	}
 
-	// Crear metodos comprueba
+	// metodo Asignar NuevoIdentificador
 
-	/* metodo privado comprueba dni */
-	private static boolean compruebaDni(String dni) {
-
-		boolean dniValidado = false; // declara variable que contendra valor emparejador.matches
-
-		Pattern dniPatron = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");/* expresionRegular */
-		Matcher emparejador = dniPatron.matcher((dni));
-
-		dniValidado = emparejador.matches(); // se guarda el resultado del metodo emparejador.matches en una variable
-
-		if (dniValidado) { // if siempre valida a false
-			System.out.println(" El dni es Correcto");
-
-		} else {
-			System.out.println("El dni es Incorrecto");
-
-		}
-		return dniValidado;
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", dni=" + dni + ", identificador=" + identificador + ", direccionPostal="
+				+ direccionPostal + "]";
 	}
 
-	/* metodo privado comprueba codigo postal */
-	private static boolean compruebaCodigoPostal(String codigoPostal) {
-
-		boolean codigoPostalValidado = false;
-
-		Pattern cpPatron = Pattern.compile("0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}\n" + "\n" + "$");
-		Matcher emparejador = cpPatron.matcher((codigoPostal));
-
-		codigoPostalValidado = emparejador.matches(); // se guarda el resultado del método emparejador.matches en una
-		// variable
-
-		if (codigoPostalValidado) {
-			System.out.println(" El codigo Postal es Correcto");
-		} else {
-			System.out.println("El codigo Postal NO es Correcto");
-		}
-
-		return codigoPostalValidado;
-
+	private void asignarNuevoIdentificador() {
+		identificador = ultimoIdentificador++;
 	}
 
-	// Punto 7 Crear los métodos get para cada uno de los atributos
+	// getters and setters
 
 	/**
 	 * @return the nombre
@@ -116,27 +75,6 @@ public class Cliente {
 	}
 
 	/**
-	 * @return the direccion
-	 */
-	public String getDireccion() {
-		return direccion;
-	}
-
-	/**
-	 * @return the localidad
-	 */
-	public String getLocalidad() {
-		return localidad;
-	}
-
-	/**
-	 * @return the codigoPostal
-	 */
-	public String getCodigoPostal() {
-		return codigoPostal;
-	}
-
-	/**
 	 * @return the identificador
 	 */
 	public int getIdentificador() {
@@ -144,23 +82,77 @@ public class Cliente {
 	}
 
 	/**
-	 * @return the numClientes
+	 * @return the ultimoidentificador
 	 */
-	public static int getNumClientes() {
-		return numClientes;
-	}
-	// punto 8 Crear el método toString que devuelva una representación de nuestro
-	// cliente.
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Cliente [nombre=" + nombre + ", dni=" + dni + ", direccion=" + direccion + ", localidad=" + localidad
-				+ ", codigoPostal=" + codigoPostal + ", identificador=" + identificador + "]";
+	public static int getUltimoidentificador() {
+		return ultimoIdentificador;
 	}
 
+	/**
+	 * @return the direccionPostal
+	 */
+	public DireccionPostal getDireccionPostal() {
+		return direccionPostal;
+	}
+
+	// set + tarde se modifica en base a norma de negocio
+	/**
+	 * @param nombre
+	 *            the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	/**
+	 * @param dni
+	 *            the dni to set
+	 */
+	public void setDni(String dni) {
+		if (compruebaDni(dni))
+			this.dni = dni;
+		else
+			throw new ExcepcionAlquilerVehiculos("El dni no es valido");
+	}
+
+	/**
+	 * @param identificador
+	 *            the identificador to set
+	 */
+	public void setIdentificador(int identificador) {
+		
+		this.identificador = identificador;
+	}
+
+	/**
+	 * @param ultimoidentificador
+	 *            the ultimoidentificador to set
+	 */
+	public static void setUltimoidentificador(int ultimoidentificador) {
+		Cliente.ultimoIdentificador = ultimoidentificador;
+	}
+
+	/**
+	 * @param direccionPostal
+	 *            the direccionPostal to set
+	 */
+	public void setDireccionPostal(DireccionPostal direccionPostal) {
+		this.direccionPostal = direccionPostal;
+	}
+
+	// metodo compruebaDni
+
+	private static boolean compruebaDni(String dni) {
+		boolean dniValidado = false; // declara variable que contendra valor emparejador.matches
+		
+		Pattern dniPatron = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");/* expresionRegular */
+		Matcher emparejador = dniPatron.matcher((dni));
+		dniValidado = emparejador.matches(); // se guarda el resultado del metodo emparejador.matches en una variable
+		return dniValidado;
+
+	}
+
+	
+	
+	
 }
