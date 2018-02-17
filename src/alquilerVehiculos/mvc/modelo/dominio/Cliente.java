@@ -28,7 +28,7 @@ public class Cliente {
 		setNombre(nombre);
 		setDni(dni);
 		setDireccionPostal(direccionPostal);
-		asignarNuevoIdentificador();
+		setIdentificador();
 	}
 
 	// constructor copia
@@ -41,12 +41,6 @@ public class Cliente {
 		dni = cliente.getDni();
 		direccionPostal = cliente.getDireccionPostal();
 		identificador = cliente.getIdentificador();
-	}
-
-	// metodo Asignar NuevoIdentificador
-
-	private void asignarNuevoIdentificador() {
-		identificador = ultimoIdentificador++;
 	}
 
 	// getters and setters
@@ -73,13 +67,6 @@ public class Cliente {
 	}
 
 	/**
-	 * @return the ultimoidentificador
-	 */
-	public static int getUltimoidentificador() {
-		return ultimoIdentificador;
-	}
-
-	/**
 	 * @return the direccionPostal
 	 */
 	public DireccionPostal getDireccionPostal() {
@@ -95,7 +82,7 @@ public class Cliente {
 		if (nombre != null && !nombre.equals(" "))
 			this.nombre = nombre;
 		else
-			throw new ExcepcionAlquilerVehiculos("EL NOMBRE NO PUEDE ESTAR VACIO");
+			throw new ExcepcionAlquilerVehiculos("El nombre no es válido");
 	}
 
 	/**
@@ -110,23 +97,6 @@ public class Cliente {
 	}
 
 	/**
-	 * @param identificador
-	 *            the identificador to set
-	 */
-	public void setIdentificador(int identificador) {
-
-		this.identificador = identificador;
-	}
-
-	/**
-	 * @param ultimoidentificador
-	 *            the ultimoidentificador to set
-	 */
-	public static void setUltimoidentificador(int ultimoidentificador) {
-		Cliente.ultimoIdentificador = ultimoidentificador;
-	}
-
-	/**
 	 * @param direccionPostal
 	 *            the direccionPostal to set
 	 */
@@ -136,14 +106,19 @@ public class Cliente {
 
 	// metodo compruebaDni
 
-	private static boolean compruebaDni(String dni) {
+	private boolean compruebaDni(String dni) {
+		
 		boolean dniValidado = false; // declara variable que contendra valor emparejador.matches
-
 		Pattern dniPatron = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");/* expresionRegular */
-		Matcher emparejador = dniPatron.matcher((dni));
+		Matcher emparejador = dniPatron.matcher(dni);
 		dniValidado = emparejador.matches(); // se guarda el resultado del metodo emparejador.matches en una variable
+
 		return dniValidado;
 
+	}
+	
+	private void setIdentificador() {
+		identificador = ultimoIdentificador++;
 	}
 
 	/*

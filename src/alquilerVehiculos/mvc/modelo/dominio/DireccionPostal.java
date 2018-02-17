@@ -51,13 +51,13 @@ public class DireccionPostal {
 	 * @param codigoPostal
 	 * @return
 	 */
-	static boolean compruebaCodigoPostal(String codigoPostal) {
+	private boolean compruebaCodigoPostal(String codigoPostal) {
 
 		boolean codigoPostalValidado = false;
-
 		Pattern cpPatron = Pattern.compile("0[1-9][0-9]{3}|[1-4][0-9]{4}|5[0-2][0-9]{3}\n" + "\n" + "$");
 		Matcher emparejador = cpPatron.matcher((codigoPostal));
 		codigoPostalValidado = emparejador.matches(); // se guarda el resultado del método emparejador.matches en una
+		
 		return codigoPostalValidado;
 
 	}
@@ -79,7 +79,7 @@ public class DireccionPostal {
 	 */
 
 	private void setCalle(String calle) {
-		if (calle != null && !calle.equals(" "))
+		if (calle != null && !calle.equals(""))
 			this.calle = calle;
 		else
 			throw new ExcepcionAlquilerVehiculos("La calle no es valida");
@@ -89,7 +89,7 @@ public class DireccionPostal {
 	 * @param localidad
 	 */
 	private void setLocalidad(String localidad) {
-		if (localidad != null && !localidad.equals(" "))
+		if (localidad != null && !localidad.equals(""))
 			this.localidad = localidad;
 		else
 			throw new ExcepcionAlquilerVehiculos("Localidad no valida");

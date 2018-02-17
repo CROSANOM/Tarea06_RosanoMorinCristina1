@@ -1,13 +1,13 @@
 /**
  * 
  */
-package tarea05;
+package alquilerVehiculos.mvc.modelo.dominio;
 
 /**
  * @author crosanom
  *
  */
-// Punto4 crear una clase que hereda de la clase Excepción
+
 public class ExcepcionAlquilerVehiculos extends RuntimeException {
 
 	// crean los atributos
