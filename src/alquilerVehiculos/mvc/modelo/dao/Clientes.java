@@ -1,13 +1,15 @@
 package alquilerVehiculos.mvc.modelo.dao;
 
 
+import java.util.Arrays;
+
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 public class Clientes {
 
 	private Cliente[] clientes;
-	private final int MAX_CLIENTES = 10;
+	private final int MAX_CLIENTES = 5;
 
 	// constructor
 
@@ -20,17 +22,10 @@ public class Clientes {
 	public Cliente[] getClientes() {
 		return clientes.clone();
 	}
-
-	// refactorización dl metodo anadirCliente de tarea5 
 	
 	public void anadirCliente(Cliente cliente) {
-		//declara una variable indice
-		int indice;
-		
-		// varible indice toma valor de metodo buscar primer indiceLibre
-		indice= buscarPrimerIndiceLibreComprobandoExistencia(cliente);
-		
-		if (indiceNoSuperaTamano(indice))// indice no supera tamaño 
+	int 	indice= buscarPrimerIndiceLibreComprobandoExistencia(cliente);
+		if (indiceNoSuperaTamano(indice))
 			clientes[indice] = new Cliente(cliente);
 		else
 			throw new ExcepcionAlquilerVehiculos("El array de clientes esta lleno.");
@@ -42,7 +37,8 @@ public class Clientes {
 		while (indiceNoSuperaTamano(indice) && !clienteEncontrado) {
 			if (clientes[indice] == null)
 				clienteEncontrado = true;
-			else if (clientes[indice].getDni().equals(cliente.getDni()))
+			else 
+				if (clientes[indice].getDni().equals(cliente.getDni()))
 				throw new ExcepcionAlquilerVehiculos("Ya existe un cliente con ese DNI");
 			else
 				indice++;
@@ -77,18 +73,26 @@ public class Clientes {
 
 	private void desplazarUnaPosicionHaciaIzquierda(int indice) {
 		for (int i = indice; i < clientes.length - 1 && clientes[i] != null; i++) {
-			clientes[i] = clientes[i + 1];
+			clientes[i] = clientes[i + 1];// desplar un indice
 		}
 		if (indice == clientes.length - 1)
 			clientes[clientes.length - 1] = null;
 	}
 
-	public Cliente buscar(String dni) {
+	public Cliente buscarCliente(String dni) {
 		int posicion = buscarIndiceCliente(dni);
 		if (indiceNoSuperaTamano(posicion))
 			return new Cliente(clientes[posicion]);
 		else
 			return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Clientes [clientes=" + Arrays.toString(clientes) + ", MAX_CLIENTES=" + MAX_CLIENTES + "]";
 	}
 
 	

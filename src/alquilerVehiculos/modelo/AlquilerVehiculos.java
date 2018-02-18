@@ -1,4 +1,5 @@
 package alquilerVehiculos.modelo;
+
 import alquilerVehiculos.mvc.modelo.dao.Alquileres;
 import alquilerVehiculos.mvc.modelo.dao.Clientes;
 import alquilerVehiculos.mvc.modelo.dao.Turismos;
@@ -19,7 +20,8 @@ public class AlquilerVehiculos {
 		alquileres = new Alquileres();
 	}
 
-	// acceso metodos get turismos-alquileres-clientes
+	// Metodos getters de atributos de AlquilerVehiculos
+	// turismos-alquileres-clientes
 
 	/**
 	 * @return the clientes
@@ -42,7 +44,21 @@ public class AlquilerVehiculos {
 		return alquileres;
 	}
 
-	// acceso a metodos clientes :anadir - borrar- getCliente
+	// Getters clientes, turismos, alquileres : return [ ] )
+
+	public Cliente[] ObtenerCliente() {
+		return clientes.getClientes();
+	}
+
+	public Turismo[] ObtenerTurismos() {
+		return turismos.getTurismo();
+	}
+
+	public Alquiler[] obtenerAlquileres() {
+		return alquileres.getAlquileres();
+	}
+
+	// metodos clientes ( anadir, borrar, buscar )
 
 	public void anadirCliente(Cliente cliente) {
 		clientes.anadirCliente(cliente);
@@ -52,19 +68,11 @@ public class AlquilerVehiculos {
 		clientes.borrarCliente(dni);
 	}
 
-	// se usa en proximas versiones
-	public Cliente[] getCliente() {
-		return clientes.getClientes();
-
+	public Cliente buscarCliente(String dni) {
+		return clientes.buscarCliente(dni);
 	}
 
-	public Cliente getCliente(String dni) {
-		return getCliente(dni);
-
-	}
-
-	// acceso a metodos turismos: anadir-borrar-getTurismo
-
+	// metodos turismos
 	public void anadirTurismo(Turismo turismo) {
 		turismos.anadirTurismo(turismo);
 	}
@@ -73,31 +81,29 @@ public class AlquilerVehiculos {
 		turismos.borrarTurismo(matricula);
 	}
 
-	public Turismo getTurismo(String matricula) {
-		return getTurismo(matricula);
-
+	public Turismo buscarTurismo(String matricula) {
+		return turismos.buscarTurismo(matricula);
 	}
 
-	// se usa en proximas versiones
-	public Turismo[] getTurismo() {
-		return turismos.getTurismo();
-
-	}
-
-	// acceso metodos de alquileres : abrir - cerrar
+	// metodos para los alquileres
 
 	public void abrirAlquiler(Cliente cliente, Turismo turismo) {
 		alquileres.abrirAlquiler(cliente, turismo);
+	}
+
+	public void cerrarAlquiler(Turismo turismo) {
+		alquileres.cerrarAlquiler(turismo);
 
 	}
 
-	public void cerrarAlquiler(Cliente cliente, Turismo turismo) {
-		alquileres.cerrarAlquiler(cliente, turismo);
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "AlquilerVehiculos [clientes=" + clientes + ", turismos=" + turismos + ", alquileres=" + alquileres
+				+ "]";
 	}
-
-	public Alquiler[] getAlquiler() {
-		// TODO Auto-generated method stub
-		return alquileres.getAlquiler();
-	}
-
 }
