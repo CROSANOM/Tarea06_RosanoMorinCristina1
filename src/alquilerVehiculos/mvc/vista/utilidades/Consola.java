@@ -9,37 +9,46 @@ import alquilerVehiculos.mvc.vista.Opcion;
 
 // metodos staticos: mostrarMenu, MostrarCabecera,  leer cliente, turismos, matricula, Dni, 
 public class Consola {
-	
-	// constructor 
+
+	// constructor
 	public Consola() {
-		
+
 	}
-	
-// mostrar Menu 
+
+	// mostrar Menu
 	public static void mostrarMenu() {
 		mostrarCabecera("Alquiler");
-		for (Opcion opcion: Opcion.values()) {
+		for (Opcion opcion : Opcion.values()) {
 			System.out.println(opcion);
 		}
 	}
-	
+
 	// Cabeceras de los listados de las opciones.
 	public static void mostrarCabecera(String mensaje) {
 		System.out.printf("%n%s%n", mensaje);
 		System.out.println(String.format("%0" + mensaje.length() + "d%n", 0).replace("0", "-"));
 	}
-	
 
-//	// Elegir Opción 
-//	public static int elegirOpcion() {
-//		int ordinalOpcion;
-//		do {
-//			System.out.print("\nElige una opcion: ");
-//			ordinalOpcion = Entrada.entero();
-//		} while (!Opcion.esOrdinalValido(ordinalOpcion));
-//		return ordinalOpcion;
-//	}
-	// 	leerCliente 
+	 // Elegir Opción
+	 public static int elegirOpcion() {
+	 int ordinalOpcion;
+	 do {
+	 System.out.print("\nElige una opcion: ");
+	 ordinalOpcion = Entrada.entero();
+	 } while (!Opcion.esOrdinalValido(ordinalOpcion));
+	 return ordinalOpcion;
+	 }
+
+
+	// leerDni
+	public static String leerDni() {
+		System.out.print("Introduce el DNI del cliente: ");
+		String dniALeer = Entrada.cadena();
+		return dniALeer;
+	}
+	
+	
+	 //leerCliente:cliente 
 	public static Cliente leerCliente() {
 		Cliente cliente = null;
 		System.out.print("Nombre: ");
@@ -52,19 +61,23 @@ public class Consola {
 		String localidad = Entrada.cadena();
 		System.out.print("CodigoPostal: ");
 		String codigoPostal = Entrada.cadena();
-		cliente = new Cliente(nombre, dni,  new DireccionPostal(direccion, localidad, codigoPostal));
+		cliente = new Cliente(nombre, dni, new DireccionPostal(direccion, localidad, codigoPostal));
 		return cliente;
 	}
-	// leerDni
-	public static String leerDni() {
-		System.out.print("Introduce el DNI del cliente: ");
-		String dniBorrar = Entrada.cadena();
-		return dniBorrar;
+	
+//leerMatricula :matricula (
+	public static String leerMatricula() {
+		System.out.print("Introduce la matricula del turismo: ");
+		String matriculaLeer = Entrada.cadena();
+		return matriculaLeer;
 	}
-	// 
-	public static Turismo leerTurismo(Cliente cliente) {
+	
+
+
+	public static Turismo leerTurismo() {
+	
 		Turismo nuevoTurismo = null;
-		System.out.print("Matrcula: ");
+		System.out.print("Matricula: ");
 		String matricula = Entrada.cadena();
 		System.out.print("Marca: ");
 		String marca = Entrada.cadena();
@@ -72,37 +85,31 @@ public class Consola {
 		String modelo = Entrada.cadena();
 		System.out.print("Cilindrada: ");
 		int cilindrada = Entrada.entero();
-		nuevoTurismo = new Turismo( matricula, marca, modelo,  cilindrada);
+		nuevoTurismo = new Turismo(matricula, marca, modelo, cilindrada);
 		return nuevoTurismo;
+		
 	}
-	
-	public static String leerMatricula() {
-		System.out.print("Introduce la matricula del turismo: ");
-		String matriculaBorrar = Entrada.cadena();
-		return matriculaBorrar;
-	}
-	
-
-
-//	public static int elegirTipoVehiculo() {
-//		int ordinalTipoVehiculo;
-//		do {
-//			System.out.printf("Elige el tipo de trabajo: ( %s)", obtenerTiposTrabajo());
-//			ordinalTipoTrabajo = Entrada.entero();
-//		} while (!TipoTrabajo.esOrdinalValido(ordinalTipoTrabajo));
-//		return ordinalTipoTrabajo;
-//	}
-//	
-//	private static String obtenerTiposTrabajo() {
-//		StringBuilder tiposTrabajos = new StringBuilder("");
-//		for (TipoTrabajo tipoTrabajo: TipoTrabajo.values()) {
-//			tiposTrabajos.append(tipoTrabajo.ordinal()).append(".- ").append(tipoTrabajo).append(" ");
-//		}
-//		return tiposTrabajos.toString();
-//	}
-//
-//}
 
 	
 	
+	// public static int elegirTipoVehiculo() {
+	// int ordinalTipoVehiculo;
+	// do {
+	// System.out.printf("Elige el tipo de trabajo: ( %s)", obtenerTiposTrabajo());
+	// ordinalTipoTrabajo = Entrada.entero();
+	// } while (!TipoTrabajo.esOrdinalValido(ordinalTipoTrabajo));
+	// return ordinalTipoTrabajo;
+	// }
+	//
+	// private static String obtenerTiposTrabajo() {
+	// StringBuilder tiposTrabajos = new StringBuilder("");
+	// for (TipoTrabajo tipoTrabajo: TipoTrabajo.values()) {
+	// tiposTrabajos.append(tipoTrabajo.ordinal()).append(".-
+	// ").append(tipoTrabajo).append(" ");
+	// }
+	// return tiposTrabajos.toString();
+	// }
+	//
+	// }
+
 }
