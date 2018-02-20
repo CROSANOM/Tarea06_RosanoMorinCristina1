@@ -2,10 +2,10 @@ package alquilerVehiculos.mvc.modelo.dao;
 
 import java.util.Arrays;
 
+import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import alquilerVehiculos.mvc.modelo.dominio.Turismo;
 
 public class Alquileres {
 
@@ -39,29 +39,29 @@ public class Alquileres {
 
 	/**
 	 * @param cliente
-	 * @param turismo
+	 * @param vehiculo
 	 */
 
 	// abrir alquiler (buscarIndiceLibre, indiceNoSupera)
 
-	public void abrirAlquiler (Cliente cliente, Turismo turismo) {
-		int indice = buscarPrimerIndiceLibreComprobandoExistencia(turismo);// indiceConAlquiler
+	public void abrirAlquiler (Cliente cliente, Vehiculo vehiculo) {
+		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);// indiceConAlquiler
 		if (indiceNoSuperaTamano(indice)) {
-			alquileres[indice] = new Alquiler(cliente, turismo);
+			alquileres[indice] = new Alquiler(cliente, vehiculo);
 		} else {
 			throw new ExcepcionAlquilerVehiculos("El array esta lleno");
 		}
 	}
 
 	
-	// private int buscarPrimerIndiceLibreComprobandoExistencia(Turismo turismo)
-	private int buscarPrimerIndiceLibreComprobandoExistencia(Turismo turismo) {
+	// private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo turismo)
+	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontrado = false;
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
 			if (alquileres[indice] == null) {
 				encontrado = true;
-			} else if (alquileres[indice].getTurismo().getMatricula().equals(turismo.getMatricula())
+			} else if (alquileres[indice].getTurismo().getMatricula().equals(vehiculo.getMatricula())
 					&& !alquileres[indice].getTurismo().getDisponible()) {
 				throw new ExcepcionAlquilerVehiculos("El turismo no esta disponible, ya esta alquilado");
 			} else {
@@ -76,20 +76,20 @@ public class Alquileres {
 		return indice < alquileres.length;
 	}
 
-	public void cerrarAlquiler(Turismo turismo) {
-		int indice = buscarIndiceAlquilerAbierto(turismo);
+	public void cerrarAlquiler(Vehiculo vehiculo) {
+		int indice = buscarIndiceAlquilerAbierto(vehiculo);
 		if (indiceNoSuperaTamano(indice))
 			alquileres[indice].cerrar();
 		else
 			throw new ExcepcionAlquilerVehiculos("No hay ningun alquiler Abierto");
 	}
 
-	// private int buscarIndiceAlquilerAbierto(Turismo turismo, Cliente cliente)
-	private int buscarIndiceAlquilerAbierto(Turismo turismo) {
+	// private int buscarIndiceAlquilerAbierto(Vehiculo turismo, Cliente cliente)
+	private int buscarIndiceAlquilerAbierto(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontradoAlquiler = false;
 		while (indiceNoSuperaTamano(indice) && !encontradoAlquiler && alquileres[indice] != null) {
-			if (alquileres[indice].getTurismo().getMatricula().equals(turismo.getMatricula()))
+			if (alquileres[indice].getTurismo().getMatricula().equals(vehiculo.getMatricula()))
 				encontradoAlquiler = true;
 			else
 				indice++;
@@ -114,7 +114,7 @@ public class Alquileres {
 	
 	
 	
-	// public void abrirAlquiler(Cliente cliente, Turismo turismo) {
+	// public void abrirAlquiler(Cliente cliente, Vehiculo turismo) {
 	//
 	// int posicion = 0;
 	// boolean posicionEncontrada = false;
@@ -156,7 +156,7 @@ public class Alquileres {
 	 */
 
 	//
-	// public void cerrarAlquiler(Cliente cliente, Turismo turismo) {
+	// public void cerrarAlquiler(Cliente cliente, Vehiculo turismo) {
 	//
 	// int posicion = 0;
 	// boolean posicionEncontrada = false;

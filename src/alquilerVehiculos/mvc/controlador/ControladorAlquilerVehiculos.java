@@ -1,9 +1,9 @@
 package alquilerVehiculos.mvc.controlador;
 
 import alquilerVehiculos.modelo.AlquilerVehiculos;
+import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
-import alquilerVehiculos.mvc.modelo.dominio.Turismo;
 import alquilerVehiculos.mvc.vista.IUTextual;
 
 public class ControladorAlquilerVehiculos {
@@ -43,31 +43,31 @@ public class ControladorAlquilerVehiculos {
 		return modelo.ObtenerCliente();
 	}
 
-	// metodos de turismos 
-	public void anadirTurismo(Turismo turismo) {
-		modelo.anadirTurismo(turismo);
+	// metodos de vehiculos 
+	public void anadirVehiculo(Vehiculo vehiculo) {
+		modelo.anadirVehiculo(vehiculo);
 	}
 
-	public void borrarTurismo(String matricula) {
-		modelo.borrarTurismo(matricula);
+	public void borrarVehiculo(String matricula) {
+		modelo.borrarVehiculo(matricula);
 	}
 
-	public Turismo buscarTurismo(String matricula) {
-		return modelo.buscarTurismo(matricula);
+	public Vehiculo buscarVehiculo(String matricula) {
+		return modelo.buscarVehiculo(matricula);
 	}
 
-	public Turismo[] obtenerTurismo() {
-		return modelo.ObtenerTurismos();
+	public Vehiculo[] obtenerVehiculo() {
+		return modelo.ObtenerVehiculos();
 	}
 	// metodo de alquier
 
-	public void abrirAlquiler(Cliente cliente, Turismo turismo) {
-		modelo.abrirAlquiler(cliente, turismo);
+	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
+		modelo.abrirAlquiler(cliente, vehiculo);
 		
 	}
 
-	public void cerrarAlquiler(Turismo turismo) {
-		modelo.cerrarAlquiler(turismo);
+	public void cerrarAlquiler(Vehiculo vehiculo) {
+		modelo.cerrarAlquiler(vehiculo);
 	}
 
 	public Alquiler[] obtenerAlquiler() {

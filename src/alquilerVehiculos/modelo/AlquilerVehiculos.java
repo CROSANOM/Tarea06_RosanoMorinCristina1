@@ -1,27 +1,28 @@
 package alquilerVehiculos.modelo;
 
+import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dao.Alquileres;
 import alquilerVehiculos.mvc.modelo.dao.Clientes;
-import alquilerVehiculos.mvc.modelo.dao.Turismos;
+import alquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
-import alquilerVehiculos.mvc.modelo.dominio.Turismo;
 
+// renombro 
 public class AlquilerVehiculos {
 	// atributos
 	private Clientes clientes;
-	private Turismos turismos;
+	private Vehiculos vehiculos;
 	private Alquileres alquileres;
 
 	// constructor
 	public AlquilerVehiculos() {
 		clientes = new Clientes();
-		turismos = new Turismos();
+		vehiculos = new Vehiculos();
 		alquileres = new Alquileres();
 	}
 
 	// Metodos getters de atributos de AlquilerVehiculos
-	// turismos-alquileres-clientes
+	// vehiculos-alquileres-clientes
 
 	/**
 	 * @return the clientes
@@ -31,10 +32,10 @@ public class AlquilerVehiculos {
 	}
 
 	/**
-	 * @return the turismos
+	 * @return the vehiculos
 	 */
-	public Turismos getTurismos() {
-		return turismos;
+	public Vehiculos getVehiculos() {
+		return vehiculos;
 	}
 
 	/**
@@ -44,14 +45,14 @@ public class AlquilerVehiculos {
 		return alquileres;
 	}
 
-	// Getters clientes, turismos, alquileres : return [ ] )
+	// Getters clientes, vehiculos, alquileres : return [ ] )
 
 	public Cliente[] ObtenerCliente() {
 		return clientes.getClientes();
 	}
 
-	public Turismo[] ObtenerTurismos() {
-		return turismos.getTurismo();
+	public Vehiculo[] ObtenerVehiculos() {
+		return vehiculos.getVehiculo();
 	}
 
 	public Alquiler[] obtenerAlquileres() {
@@ -72,27 +73,27 @@ public class AlquilerVehiculos {
 		return clientes.buscarCliente(dni);
 	}
 
-	// metodos turismos
-	public void anadirTurismo(Turismo turismo) {
-		turismos.anadirTurismo(turismo);
+	// metodos vehiculos
+	public void anadirVehiculo(Vehiculo vehiculo) {
+		vehiculos.anadirVehiculo(vehiculo);
 	}
 
-	public void borrarTurismo(String matricula) {
-		turismos.borrarTurismo(matricula);
+	public void borrarVehiculo(String matricula) {
+		vehiculos.borrarVehiculo(matricula);
 	}
 
-	public Turismo buscarTurismo(String matricula) {
-		return turismos.buscarTurismo(matricula);
+	public Vehiculo buscarVehiculo(String matricula) {
+		return vehiculos.buscarVehiculo(matricula);
 	}
 
 	// metodos para los alquileres
 
-	public void abrirAlquiler(Cliente cliente, Turismo turismo) {
-		alquileres.abrirAlquiler(cliente, turismo);
+	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
+		alquileres.abrirAlquiler(cliente, vehiculo);
 	}
 
-	public void cerrarAlquiler(Turismo turismo) {
-		alquileres.cerrarAlquiler(turismo);
+	public void cerrarAlquiler(Vehiculo vehiculo) {
+		alquileres.cerrarAlquiler(vehiculo);
 
 	}
 
@@ -103,7 +104,7 @@ public class AlquilerVehiculos {
 	 */
 	@Override
 	public String toString() {
-		return "AlquilerVehiculos [clientes=" + clientes + ", turismos=" + turismos + ", alquileres=" + alquileres
+		return "AlquilerVehiculos [clientes=" + clientes + ", vehiculos=" + vehiculos + ", alquileres=" + alquileres
 				+ "]";
 	}
 }

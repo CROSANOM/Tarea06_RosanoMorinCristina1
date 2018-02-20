@@ -1,8 +1,8 @@
 package alquilerVehiculos.mvc.vista.utilidades;
 
+import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
-import alquilerVehiculos.mvc.modelo.dominio.Turismo;
 import alquilerVehiculos.mvc.vista.Opcion;
 
 // Esta clase contiene toda la entrada y salida de datos de la aplicacion
@@ -67,16 +67,16 @@ public class Consola {
 	
 //leerMatricula :matricula (
 	public static String leerMatricula() {
-		System.out.print("Introduce la matricula del turismo: ");
+		System.out.print("Introduce la matricula del vehiculo: ");
 		String matriculaLeer = Entrada.cadena();
 		return matriculaLeer;
 	}
 	
 
 
-	public static Turismo leerTurismo() {
+	public static Vehiculo leerVehiculo() {
 	
-		Turismo nuevoTurismo = null;
+		Vehiculo nuevoVehiculo = null;
 		System.out.print("Matricula: ");
 		String matricula = Entrada.cadena();
 		System.out.print("Marca: ");
@@ -85,8 +85,8 @@ public class Consola {
 		String modelo = Entrada.cadena();
 		System.out.print("Cilindrada: ");
 		int cilindrada = Entrada.entero();
-		nuevoTurismo = new Turismo(matricula, marca, modelo, cilindrada);
-		return nuevoTurismo;
+		nuevoVehiculo = new Vehiculo(matricula, marca, modelo, cilindrada);
+		return nuevoVehiculo;
 		
 	}
 
