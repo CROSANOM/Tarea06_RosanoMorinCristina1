@@ -48,7 +48,7 @@ public  abstract class Vehiculo {
 
 	}
 
-//	// metodos abstract
+	// metodos abstract
 
 	public abstract double getPrecioEspecifico();
 
