@@ -8,13 +8,11 @@ import alquilerVehiculos.mvc.vista.IUTextual;
 public class PrincipalAlquilerVehiculos {
 
 	public static void main(String[] args) {
-		AlquilerVehiculos modelo= new AlquilerVehiculos();
+		AlquilerVehiculos modelo = new AlquilerVehiculos();
 		IUTextual vista = new IUTextual();
 		ControladorAlquilerVehiculos controlador = new ControladorAlquilerVehiculos(modelo, vista);
-		
+
 		controlador.comenzar();
 	}
 
-	}
-
-
+}

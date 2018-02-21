@@ -1,5 +1,4 @@
 package alquilerVehiculos.mvc.dominio.vehiculo;
-
 import java.util.regex.*;
 
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
@@ -11,40 +10,82 @@ import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 public class Vehiculo {
 
+	
 	private String matricula, marca, modelo;
-	private int cilindrada;
 	private boolean disponible = true; // un coche disponible
 
-	/**
-	 * @param matricula
-	 * @param marca
-	 * @param modelo
-	 * @param cilindrada
-	 */
-	public Vehiculo(String matricula, String marca, String modelo, int cilindrada) {
+	// anadir los atributos de Vehiculo
+	
+	private final double  FACTOR_CILINDRADA=1200;
+	private final double FACTOR_NUMERO_PLAZAS_=1;
+	private final double FACTOR_PMA =10;
+	private DatosTecnicosVehiculo datosTecnicos;
+	
+	//Constructor ()
+	
+	public Vehiculo(String matricula, String marca, String modelo,  DatosTecnicosVehiculo datosTecnicos) {
 		
 		setMatricula(matricula);
 		setMarca(marca);
 		setModelo(modelo);
-		setCilindrada(cilindrada);
+		setDatosTecnicosVehiculo(datosTecnicos);
 
 	}
 
-	// Constructor Copia
+	
+	// constructor copia 
+	
 	public Vehiculo(Vehiculo vehiculo) {
 
-		matricula = vehiculo.getMatricula();
-		marca = vehiculo.getMarca();
-		modelo = vehiculo.getModelo();
-		cilindrada = vehiculo.getCilindrada();
-		disponible = vehiculo.getDisponible();
-
+	matricula=vehiculo.getMatricula();
+	marca=vehiculo.getMarca();
+	modelo=vehiculo.getModelo();
+	datosTecnicos=vehiculo.getDatosTecnicos();
+	
+	}
+	
+	// get datos tecnicos 
+	
+	/**
+	 * @return the fACTOR_CILINDRADA
+	 */
+	public double getFACTOR_CILINDRADA() {
+		return FACTOR_CILINDRADA;
 	}
 
-	// setters
+
+	/**
+	 * @return the fACTOR_NUMERO_PLAZAS_
+	 */
+	public double getFACTOR_NUMERO_PLAZAS_() {
+		return FACTOR_NUMERO_PLAZAS_;
+	}
+
+
+	/**
+	 * @return the fACTOR_PMA
+	 */
+	public double getFACTOR_PMA() {
+		return FACTOR_PMA;
+	}
+
+	/**
+	 * @return the datosTecnicos
+	 */
+	public DatosTecnicosVehiculo getDatosTecnicos() {
+		return datosTecnicos;
+	}
+
+
+	private void setDatosTecnicosVehiculo(DatosTecnicosVehiculo datosTecnicos) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	// metodos setters
 	
+	public void setDatosTecnicosVehiculos(DatosTecnicosVehiculo datosTecnicosVehiculos) {
+	 
+	}
 	
 		/**
 		 * @param disponible
@@ -91,16 +132,6 @@ public class Vehiculo {
 				//throw new ExcepcionAlquilerVehiculos("El modelo no es valido");
 		}
 
-		/**
-		 * @param cilindrada the cilindrada to set
-		 */
-		private void setCilindrada(int cilindrada) {
-			if (cilindrada > 0) {
-				this.cilindrada = cilindrada;
-			} else
-				throw new ExcepcionAlquilerVehiculos("La cilindrada no es correcta");
-		}
-	
 	
 	// Metodo para comprobar matricula usando expresión regular
 	private boolean compruebaMatricula(String matricula) {
@@ -147,12 +178,6 @@ public class Vehiculo {
 		return modelo;
 	}
 
-	/**
-	 * @return the cilindrada
-	 */
-	public int getCilindrada() {
-		return cilindrada;
-	}
 
 	/**
 	 * @return the disponibilidad
@@ -163,17 +188,21 @@ public class Vehiculo {
 
 	
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	// toString actualizado con datosTecnicos
+
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", cilindrada="
-				+ cilindrada + ", disponibilidad=" + getDisponible() + "]";
+		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", disponible="
+				+ disponible + ", FACTOR_CILINDRADA=" + FACTOR_CILINDRADA + ", FACTOR_NUMERO_PLAZAS_="
+				+ FACTOR_NUMERO_PLAZAS_ + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicos + "]";
 	}
+
 	
+	
+
 	
 	
 }

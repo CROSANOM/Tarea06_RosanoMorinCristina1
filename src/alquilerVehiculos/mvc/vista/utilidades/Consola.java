@@ -1,5 +1,6 @@
 package alquilerVehiculos.mvc.vista.utilidades;
 
+import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
@@ -83,11 +84,16 @@ public class Consola {
 		String marca = Entrada.cadena();
 		System.out.print("Modelo: ");
 		String modelo = Entrada.cadena();
-		System.out.print("Cilindrada: ");
+		System.out.print("Datos Tecnicos de Vehiculos: ");
+		String datosTecnicos = Entrada.cadena();
+		System.out.print("cilindrada: ");
 		int cilindrada = Entrada.entero();
-		nuevoVehiculo = new Vehiculo(matricula, marca, modelo, cilindrada);
-		return nuevoVehiculo;
-		
+		System.out.print("Numero de plazas: ");
+		int numeroPlazas = Entrada.entero();
+		System.out.print("pma: ");
+		int pma = Entrada.entero();
+		nuevoVehiculo = new Vehiculo(matricula, marca, modelo, new DatosTecnicosVehiculo(cilindrada, numeroPlazas, pma));
+		return nuevoVehiculo;	
 	}
 
 	

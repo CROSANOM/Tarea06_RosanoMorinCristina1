@@ -11,7 +11,7 @@ import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
  */
 
 public class Alquiler {
-	// atributos de la clase Alquiler
+	// atributos de la clase Alquiler.
 	private Cliente cliente;
 	private Vehiculo vehiculo;
 	private boolean alquilerAbierto;
@@ -97,7 +97,7 @@ public class Alquiler {
 
 	// getPrecio
 	public double getPrecio() { // obtener el precioDia segun regla de negocio
-		return PRECIO_DIA * dias + vehiculo.getCilindrada() / 100;
+		return PRECIO_DIA * dias + vehiculo.getFACTOR_CILINDRADA() / 100;
 	}
 
 	
