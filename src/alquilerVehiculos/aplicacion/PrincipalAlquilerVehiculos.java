@@ -7,6 +7,7 @@ import alquilerVehiculos.mvc.vista.IUTextual;
 // Accedo a las clases que controlan la aplicación incluida la consola no se instancian sus metodos Staticos
 public class PrincipalAlquilerVehiculos {
 
+	// metodo main 
 	public static void main(String[] args) {
 		AlquilerVehiculos modelo = new AlquilerVehiculos();
 		IUTextual vista = new IUTextual();
