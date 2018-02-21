@@ -8,7 +8,7 @@ import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 /**
  * @author crosanom
- *
+ *clase especial Enum
  */
 public enum TipoVehiculo {
 

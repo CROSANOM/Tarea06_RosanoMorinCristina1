@@ -12,7 +12,7 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
  *
  */
 
-// crear la clase abstract de vehiculo
+// crear la clase abstract de vehiculo de la que heredan la
 
 public  abstract class Vehiculo {
 
