@@ -4,6 +4,7 @@ import alquilerVehiculos.modelo.AlquilerVehiculos;
 import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.vista.IUTextual;
 
 public class ControladorAlquilerVehiculos {
@@ -43,10 +44,11 @@ public class ControladorAlquilerVehiculos {
 		return modelo.ObtenerCliente();
 	}
 
-	// metodos de vehiculos 
-	public void anadirVehiculo(Vehiculo vehiculo) {
-		modelo.anadirVehiculo(vehiculo);
-	}
+	// metodos Vehiculos
+	
+	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
+        modelo.anadirVehiculo(vehiculo, tipoVehiculo);
+    }
 
 	public void borrarVehiculo(String matricula) {
 		modelo.borrarVehiculo(matricula);

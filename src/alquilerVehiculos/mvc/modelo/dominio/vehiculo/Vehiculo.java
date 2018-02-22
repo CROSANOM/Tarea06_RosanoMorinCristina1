@@ -6,25 +6,25 @@ import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 
-
 /**
  * @author crosanom version2
  *
  */
 
-// crear la clase abstract de vehiculo de la que heredan la
+// crear la clase abstract de vehiculo
 
-public  abstract class Vehiculo {
+public abstract class Vehiculo {
 
 	private String matricula, marca, modelo;
 	private boolean disponible = true; // un coche disponible
 
 	// anadir los atributos de Vehiculo
 
-	private final double FACTOR_CILINDRADA = 1200;
-	private final double FACTOR_NUMERO_PLAZAS_ = 1;
-	private final double FACTOR_PMA = 10;
 	private DatosTecnicosVehiculo datosTecnicos;
+
+	public final double FACTOR_CILINDRADA = datosTecnicos.getCilindrada();
+	public final double FACTOR_NUMERO_PLAZAS = datosTecnicos.getNumerosPlazas();
+	public final double FACTOR_PMA = datosTecnicos.getPma();
 
 	// Constructor ()
 
@@ -64,11 +64,13 @@ public  abstract class Vehiculo {
 	}
 
 	/**
-	 * @return the fACTOR_NUMERO_PLAZAS_
+	 * @return the fACTOR_NUMERO_PLAZAS
 	 */
-	public double getFACTOR_NUMERO_PLAZAS_() {
-		return FACTOR_NUMERO_PLAZAS_;
+	public double getFACTOR_NUMERO_PLAZAS() {
+		return getFACTOR_NUMERO_PLAZAS();
 	}
+
+	
 
 	/**
 	 * @return the fACTOR_PMA
@@ -202,8 +204,8 @@ public  abstract class Vehiculo {
 	@Override
 	public String toString() {
 		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", disponible="
-				+ disponible + ", FACTOR_CILINDRADA=" + FACTOR_CILINDRADA + ", FACTOR_NUMERO_PLAZAS_="
-				+ FACTOR_NUMERO_PLAZAS_ + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicos + "]";
+				+ disponible + ", FACTOR_CILINDRADA=" + FACTOR_CILINDRADA + ", FACTOR_NUMERO_PLAZAS="
+				+ FACTOR_NUMERO_PLAZAS + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicos + "]";
 	}
 
 }

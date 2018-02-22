@@ -2,7 +2,7 @@ package alquilerVehiculos.mvc.vista;
 
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import alquilerVehiculos.mvc.vista.IUTextual;
-
+// enum
 public enum Opcion {
 	
 	SALIR("Salir") {

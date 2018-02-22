@@ -4,7 +4,9 @@ import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.vista.Opcion;
+
 
 // Esta clase contiene toda la entrada y salida de datos de la aplicacion
 
@@ -72,7 +74,6 @@ public class Consola {
 		String matriculaLeer = Entrada.cadena();
 		return matriculaLeer;
 	}
-	
 
 
 	public static Vehiculo leerVehiculo() {
@@ -85,7 +86,6 @@ public class Consola {
 		System.out.print("Modelo: ");
 		String modelo = Entrada.cadena();
 		System.out.print("Datos Tecnicos de Vehiculos: ");
-		String datosTecnicos = Entrada.cadena();
 		System.out.print("cilindrada: ");
 		int cilindrada = Entrada.entero();
 		System.out.print("Numero de plazas: ");
@@ -96,26 +96,24 @@ public class Consola {
 		return nuevoVehiculo;	
 	}
 
+	// metodo acceder tipos de Vehiculo
 	
+	 public static int elegirTipoVehiculo() {
+	 int ordinalTipoVehiculo;
+	 do {
+	 System.out.printf("Elige el tipo de trabajo: ( %s)", obtenerTipoVehiculo());
+	 ordinalTipoVehiculo = Entrada.entero();
+	 } while (!TipoVehiculo.esOrdinalValido(ordinalTipoVehiculo));
+	 return ordinalTipoVehiculo;
+	 }
 	
-	// public static int elegirTipoVehiculo() {
-	// int ordinalTipoVehiculo;
-	// do {
-	// System.out.printf("Elige el tipo de trabajo: ( %s)", obtenerTiposTrabajo());
-	// ordinalTipoTrabajo = Entrada.entero();
-	// } while (!TipoTrabajo.esOrdinalValido(ordinalTipoTrabajo));
-	// return ordinalTipoTrabajo;
-	// }
-	//
-	// private static String obtenerTiposTrabajo() {
-	// StringBuilder tiposTrabajos = new StringBuilder("");
-	// for (TipoTrabajo tipoTrabajo: TipoTrabajo.values()) {
-	// tiposTrabajos.append(tipoTrabajo.ordinal()).append(".-
-	// ").append(tipoTrabajo).append(" ");
-	// }
-	// return tiposTrabajos.toString();
-	// }
-	//
-	// }
+	 public static String obtenerTipoVehiculo() {
+	        StringBuilder tiposVehiculo = new StringBuilder("");
+	        for (TipoVehiculo tipoVehiculo : TipoVehiculo.values()) {
+	            tiposVehiculo.append(tipoVehiculo.ordinal()).append(".- ").append(tipoVehiculo).append(" ");
+	        }
+	        return tiposVehiculo.toString();
+	
+	 }
 
 }

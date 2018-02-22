@@ -6,8 +6,9 @@ import alquilerVehiculos.mvc.modelo.dao.Clientes;
 import alquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 
-// renombro 
+
 public class AlquilerVehiculos {
 	// atributos
 	private Clientes clientes;
@@ -73,11 +74,11 @@ public class AlquilerVehiculos {
 		return clientes.buscarCliente(dni);
 	}
 
-	// metodos vehiculos
-	public void anadirVehiculo(Vehiculo vehiculo) {
-		vehiculos.anadirVehiculo(vehiculo);
-	}
-
+	//metodos de los Vehiculos
+	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
+        vehiculos.anadirVehiculo(vehiculo, tipoVehiculo);
+    }
+	
 	public void borrarVehiculo(String matricula) {
 		vehiculos.borrarVehiculo(matricula);
 	}

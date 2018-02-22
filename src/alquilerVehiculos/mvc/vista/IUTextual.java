@@ -7,6 +7,7 @@ import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.vista.utilidades.Consola;
 import alquilerVehiculos.mvc.vista.utilidades.Entrada;
 
@@ -15,6 +16,7 @@ public class IUTextual {
 	// atributo
 	private ControladorAlquilerVehiculos controlador;
 	private Opcion vista;
+	private TipoVehiculo tipoVehiculo;
 
 	// constructor
 	public IUTextual() {
@@ -93,18 +95,23 @@ public class IUTextual {
 		}
 	}
 			
-		// anadirTurismo
-		public void anadirVehiculo() {
-			Consola.mostrarCabecera("Anadir Vehiculo");
-			try {
-				Vehiculo vehiculo = Consola.leerVehiculo();
-				controlador.anadirVehiculo(vehiculo);
-				System.out.println("Vehiculo anadido satisfactoriamente\n");
-			} catch (ExcepcionAlquilerVehiculos e) {
-				System.out.printf("ERROR: %s%n%n", e.getMessage());
-			}
-		}
+	
+	
+	public void anadirVehiculo() {
+        Consola.mostrarCabecera("Añadir vehiculo");
+        Vehiculo vehiculo = Consola.leerVehiculo();
+        try {
+            controlador.anadirVehiculo(vehiculo, tipoVehiculo);
+            System.out.println("Vehiculo añadido satisfactoriamente\n");
+        } catch (ExcepcionAlquilerVehiculos e) {
+            System.out.printf("ERROR: %s%n%n", e.getMessage());
+        }
+    }
 
+	
+	
+	
+	
 	// metodos de Clientes
 
 	// listar

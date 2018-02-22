@@ -3,30 +3,36 @@
  */
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
+import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 /**
  * @author crosanom
- *clase especial Enum
+ *
  */
 public enum TipoVehiculo {
 
 	TURISMO("Turismo") {
-		public Turismo getInstancia(Vehiculo vehiculo) {
-			return new Turismo(vehiculo);
+		
+		public Turismo getInstancia(String matricula, String marca, String modelo, DatosTecnicosVehiculo datosTecnicosVehiculo) {
+	return new Turismo(matricula,marca,modelo, datosTecnicosVehiculo);
 		}
+		
 	},
 	DECARGA("Vehiculo de Carga") {
-		public DeCarga getInstancia(Vehiculo vehiculo) {
-			return new DeCarga(vehiculo);
+		public DeCarga getInstancia(String matricula, String marca, String modelo, DatosTecnicosVehiculo datosTecnicosVehiculo) {
+			return new DeCarga(matricula,marca,modelo,datosTecnicosVehiculo);
 		}
 	},
+	
 	AUTOBUS("Autobus") {
-		public Autobus getInstancia(Vehiculo vehiculo) {
-			return new Autobus(vehiculo);
+		public Autobus getInstancia(String matricula, String marca, String modelo, DatosTecnicosVehiculo datosTecnicosVehiculo) {
+			return new Autobus(matricula,marca,modelo, datosTecnicosVehiculo);
 		}
 	};
+	
+		
 
 	private String tipoVehiculo;
 
@@ -48,5 +54,10 @@ public enum TipoVehiculo {
 	public static boolean esOrdinalValido(int ordinal) {
 		return (ordinal >= 0 && ordinal <= values().length - 1);
 	}
+
+	// metodo abstracto
+
+	public abstract Vehiculo getInstancia(String matricula, String marca, String modelo,
+			DatosTecnicosVehiculo datosTecnicosVehiculo);
 
 }
