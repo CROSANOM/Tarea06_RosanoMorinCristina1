@@ -1,7 +1,5 @@
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
-
 public class Turismo extends Vehiculo {
 
 	// atributo Turismo
@@ -19,7 +17,6 @@ public class Turismo extends Vehiculo {
 	 */
 	public Turismo(String matricula, String marca, String modelo, DatosTecnicosVehiculo datosTecnicos) {
 		super(matricula, marca, modelo, datosTecnicos);
-
 	}
 
 	// constructor Copia

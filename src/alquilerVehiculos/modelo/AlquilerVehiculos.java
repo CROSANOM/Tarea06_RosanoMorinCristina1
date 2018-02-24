@@ -1,12 +1,12 @@
 package alquilerVehiculos.modelo;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dao.Alquileres;
 import alquilerVehiculos.mvc.modelo.dao.Clientes;
 import alquilerVehiculos.mvc.modelo.dao.Vehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
@@ -122,6 +122,7 @@ public class AlquilerVehiculos {
 	 * @param matricula
 	 * @return
 	 */
+
 	public Vehiculo buscarVehiculo(String matricula) {
 		return vehiculos.buscarVehiculo(matricula);
 	}
@@ -169,14 +170,14 @@ public class AlquilerVehiculos {
 		anadirCliente(clientep1);
 		anadirCliente(clientep2);
 		anadirCliente(clientep3);
-		// comprobar excepcion anadir cliente repetido
-		anadirCliente(clientep3);
-
+		//comprobar excepcion anadir cliente repetido
+//		anadirCliente(clientep3);
+//
 		System.out.println("Imprimir clienteP3" + clientep3.toString());
 
 		// Vehiculo public Vehiculo(String matricula, String marca, String modelo,
 		// DatosTecnicosVehiculo (int cilindrada, int numerosPlazas, int pma)) {
-		// anadir tipoVehiculo
+		//anadir tipoVehiculo
 
 		Vehiculo vehiculop1 = TipoVehiculo.AUTOBUS.getInstancia("2223GTR", "MarcaBus", "busModelo",
 				new DatosTecnicosVehiculo(1200, 72, 120));
@@ -184,23 +185,47 @@ public class AlquilerVehiculos {
 				new DatosTecnicosVehiculo(1200, 3, 500));
 		Vehiculo vehiculop3 = TipoVehiculo.TURISMO.getInstancia("2223TTT", "Wolskwagen", "polo",
 				new DatosTecnicosVehiculo(1200, 1, 500));
-		Vehiculo vehiculop4 = TipoVehiculo.DECARGA.getInstancia("2223TTR", "Pegaso", "camionModelo",
-				new DatosTecnicosVehiculo(1200, 3, 500));
+
+		System.out.println("Imprimir Vehiculos" + vehiculop1.toString() + "\n"+ vehiculop2.toString());
+		
+		Alquiler alquiler =new Alquiler (clientep1,vehiculop2);
+		
+		System.out.println("Imprimir alquiler" + alquiler.toString() + "\n"+ vehiculop2.toString());
+
+		System.out.println("Esta disponible "+vehiculop2 +vehiculop2.getDisponible());
+		
+		Vehiculo vehiculop4 = TipoVehiculo.AUTOBUS.getInstancia("2223TDT", "MIAUTOBUS", "polo",
+				new DatosTecnicosVehiculo(1200, 1, 500));
+		
+		Vehiculo vehiculop5 = TipoVehiculo.AUTOBUS.getInstancia("2223TMT", "MIAUTOBUS", "ADR",
+				new DatosTecnicosVehiculo(1200, 1, 500));
+
+
+		System.out.println(vehiculop4 );
+		
+		// Vehiculo vehiculop4 = TipoVehiculo.DECARGA.getInstancia("2223TTR", "Pegaso",
+		// "camionModelo",
+		// new DatosTecnicosVehiculo(1200, 3, 500));
 
 		anadirVehiculo(vehiculop1, TipoVehiculo.AUTOBUS);
 		anadirVehiculo(vehiculop2, TipoVehiculo.DECARGA);
 		anadirVehiculo(vehiculop3, TipoVehiculo.TURISMO);
+		anadirVehiculo(vehiculop4,TipoVehiculo.AUTOBUS);
+		anadirVehiculo(vehiculop5,TipoVehiculo.DECARGA);
+		
+		
 
-		// alquiler abrir / cerrar
-
+// alquiler abrir / cerrar
+//
 		abrirAlquiler(clientep4, vehiculop3);
-		abrirAlquiler(clientep2, vehiculop4);
+		cerrarAlquiler(vehiculop1);
+
 		abrirAlquiler(clientep1, vehiculop1);
-		abrirAlquiler(clientep4, vehiculop3);
+
 
 		cerrarAlquiler(vehiculop3);
-		cerrarAlquiler(vehiculop4);
 		cerrarAlquiler(vehiculop1);
+		
 
 	}
 

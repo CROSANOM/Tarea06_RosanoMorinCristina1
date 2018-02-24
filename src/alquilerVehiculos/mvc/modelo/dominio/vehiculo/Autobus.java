@@ -1,7 +1,5 @@
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
-
 public class Autobus extends Vehiculo {
 
 	// atributo

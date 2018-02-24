@@ -9,7 +9,7 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 public class Vehiculos {
 
 	private Vehiculo[] vehiculos;
-	private final int MAX_VEHICULOS = 5;
+	private final int MAX_VEHICULOS =10;
 
 	// constructor
 	public Vehiculos() {
@@ -21,7 +21,7 @@ public class Vehiculos {
 	}
 
 	// metodo anadir Vehiculo (buscarPrimerIndiceLibre,indiceNosuperaTamaño)
-	// 	Ahora anadirVehiculo incluye tipoVehiculo 
+	// Ahora anadirVehiculo incluye tipoVehiculo
 	/**
 	 * @param vehiculo
 	 * @param tipoVehiculo
@@ -30,13 +30,20 @@ public class Vehiculos {
 		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);
 		if (indiceNoSuperaTamano(indice))
 			/*
-			 * Modificamos se llama clase abstracta getInstancia y acceden atributos de vehiculo
+			 * Modificamos se llama clase abstracta getInstancia y acceden atributos de
+			 * vehiculo
 			 */
-			vehiculos[indice] =  tipoVehiculo.getInstancia(vehiculo.getMatricula(), vehiculo.getMarca(), vehiculo.getModelo(), vehiculo.getDatosTecnicos());
+			vehiculos[indice] = tipoVehiculo.getInstancia(vehiculo.getMatricula(), vehiculo.getMarca(),
+					vehiculo.getModelo(), vehiculo.getDatosTecnicosVehiculo());
 		else
 			throw new ExcepcionAlquilerVehiculos("El array de  vehiculos esta lleno.");
 	}
-// metodo buscarPrimerIndiceLibre ( indiceNoSupera)
+
+	// metodo buscarPrimerIndiceLibre ( indiceNoSupera)
+	/**
+	 * @param vehiculo
+	 * @return
+	 */
 	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean VehiculoEncontrado = false;
@@ -51,13 +58,20 @@ public class Vehiculos {
 		return indice;
 	}
 
+	/**
+	 * @param indice
+	 * @return false o true
+	 */
 	private boolean indiceNoSuperaTamano(int indice) {
 		return indice < vehiculos.length;
 	}
 
-	// metodo de borrar Vehiculo (buscarIndiceTurismo (indice), indiceNoSuperaTamano,
-	// desplazarUnaPosicionHaciaIzquierda)
+	// metodo de borrar Vehiculo a partir de indice
+	// (buscarIndiceTurismo (indice)/ indiceNosuperatamaño
 
+	/**
+	 * @param matricula
+	 */
 	public void borrarVehiculo(String matricula) {
 		int indice = buscarIndiceVehiculo(matricula);
 		if (indiceNoSuperaTamano(indice)) {
@@ -67,33 +81,48 @@ public class Vehiculos {
 		}
 	}
 
+	/**
+	 * @param matricula
+	 * @return indice del array donde se encuente
+	 */
 	private int buscarIndiceVehiculo(String matricula) {
 		int indice = 0;
 		boolean vehiculoEncontrado = false;
-		while (indiceNoSuperaTamano(indice) && !vehiculoEncontrado && vehiculos[indice]!=null) {
-			if (vehiculos[indice].getMatricula().equals(matricula)) {
+		while (indiceNoSuperaTamano(indice) && !vehiculoEncontrado) {
+
+			if (vehiculos[indice] != null && vehiculos[indice].getMatricula().equals(matricula)) {
 				vehiculoEncontrado = true;
 			} else {
 				indice++;
 			}
 		}
-		return vehiculoEncontrado ? indice: vehiculos.length;
+		return vehiculoEncontrado ? indice : vehiculos.length;
 	}
 
-	private void desplazarUnaPosicionHaciaIzquierda(int indice) {// pasar siguiente indice
+	// pasar al siguiente indice
+	private void desplazarUnaPosicionHaciaIzquierda(int indice) {
 		for (int i = indice; i < vehiculos.length - 1 && vehiculos[i] != null; i++) {
 			vehiculos[i] = vehiculos[i + 1];
 		}
 	}
 
-//	// Metodo buscarTurismo ( buscarIndice,indiceNoSupera)
-//	public Vehiculo buscarVehiculo(String matricula) {
-//		int indice = buscarIndiceVehiculo(matricula);
-//		if (indiceNoSuperaTamano(indice))
-//			return new Vehiculo(vehiculos[indice]);
-//		else
-//			return null;
-//	}
+	// Metodo buscarTurismo ( buscarIndice,indiceNoSupera)
+	/**
+	 * @param matricula
+	 * @return Vehiculo
+	 */
+	public Vehiculo buscarVehiculo(String matricula) {
+		int indice = buscarIndiceVehiculo(matricula);
+		Vehiculo vehiculo = null;
+
+		if (indiceNoSuperaTamano(indice)) {
+
+			return (vehiculos[indice]);
+		}
+
+		else
+			return null;
+	}
 
 	/*
 	 * (non-Javadoc)

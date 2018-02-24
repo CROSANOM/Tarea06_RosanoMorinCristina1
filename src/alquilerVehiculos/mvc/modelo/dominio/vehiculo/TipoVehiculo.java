@@ -3,7 +3,6 @@
  */
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 /**
@@ -43,7 +42,7 @@ public enum TipoVehiculo {
 		return tipoVehiculo;
 	}
 
-	public static TipoVehiculo getTipoTrabajoSegunOrdinal(int ordinal) {
+	public static TipoVehiculo getTipoVehiculosSegunOrdinal(int ordinal) {
 		if (esOrdinalValido(ordinal))
 			return values()[ordinal];
 		else

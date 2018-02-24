@@ -51,15 +51,15 @@ public class Alquileres {
 		}
 	}
 
-	// private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo turismo)
+	// private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo)
 	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontrado = false;
 		while (indiceNoSuperaTamano(indice) && !encontrado) {
 			if (alquileres[indice] == null) {
 				encontrado = true;
-			} else if (alquileres[indice].getTurismo().getMatricula().equals(vehiculo.getMatricula())
-					&& !alquileres[indice].getTurismo().getDisponible()) {
+			} else if (alquileres[indice].getVehiculo().getMatricula().equals(vehiculo.getMatricula())
+					&& !alquileres[indice].getVehiculo().getDisponible()) {
 				throw new ExcepcionAlquilerVehiculos("El turismo no esta disponible, ya esta alquilado");
 			} else {
 				indice++; // pasar a la siguiente posicion
@@ -86,7 +86,7 @@ public class Alquileres {
 		int indice = 0;
 		boolean encontradoAlquiler = false;
 		while (indiceNoSuperaTamano(indice) && !encontradoAlquiler) {
-			if (alquileres[indice].getTurismo().getMatricula().equals(vehiculo.getMatricula())
+			if (alquileres[indice].getVehiculo().getMatricula().equals(vehiculo.getMatricula())
 					&& alquileres[indice] != null && alquileres[indice].getDias() == 0)
 				encontradoAlquiler = true;
 			else

@@ -82,9 +82,11 @@ public class IUTextual {
 
 	public void anadirVehiculo() {
 		Consola.mostrarCabecera("Añadir vehiculo");
-		Vehiculo vehiculo = Consola.leerVehiculo();
+		int ordinalTipo=Consola.elegirTipoVehiculo();
+	
 		try {
-			controlador.anadirVehiculo(vehiculo, tipoVehiculo);
+			Vehiculo vehiculo = Consola.leerVehiculo();
+			controlador.anadirVehiculo(vehiculo, TipoVehiculo.getTipoVehiculosSegunOrdinal(ordinalTipo));
 			System.out.println("Vehiculo añadido satisfactoriamente\n");
 		} catch (ExcepcionAlquilerVehiculos e) {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
@@ -138,7 +140,8 @@ public class IUTextual {
 
 	// metodo de alquileres
 
-	// AbriAlquiler
+	// AbriAlquiler 
+	
 	public void abrirAlquiler() {
 
 		Consola.mostrarCabecera("Abrir Alquiler");

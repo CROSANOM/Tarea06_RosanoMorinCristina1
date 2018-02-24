@@ -1,8 +1,6 @@
 
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
-
 public class DeCarga extends Vehiculo {
 
 	// atributo

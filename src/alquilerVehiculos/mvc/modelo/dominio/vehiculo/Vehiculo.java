@@ -1,10 +1,9 @@
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 
 /**
  * @author crosanom version2
@@ -20,11 +19,11 @@ public abstract class Vehiculo {
 
 	// anadir los atributos de Vehiculo
 
-	private DatosTecnicosVehiculo datosTecnicos;
+	private DatosTecnicosVehiculo datosTecnicosVehiculos;
 
-	public final double FACTOR_CILINDRADA = datosTecnicos.getCilindrada();
-	public final double FACTOR_NUMERO_PLAZAS = datosTecnicos.getNumerosPlazas();
-	public final double FACTOR_PMA = datosTecnicos.getPma();
+	protected final double FACTOR_CILINDRADA = 0;
+	protected final double FACTOR_NUMERO_PLAZAS = 0;
+	protected final double FACTOR_PMA = 0;
 
 	// Constructor ()
 
@@ -44,16 +43,17 @@ public abstract class Vehiculo {
 		matricula = vehiculo.getMatricula();
 		marca = vehiculo.getMarca();
 		modelo = vehiculo.getModelo();
-		datosTecnicos = vehiculo.getDatosTecnicos();
+		datosTecnicosVehiculos = vehiculo.getDatosTecnicosVehiculo();
 
 	}
 
 	// metodos abstract
 
 	public abstract double getPrecioEspecifico();
+
 	public abstract TipoVehiculo getTipoVehiculo();
 
-	// get datos tecnicos
+	// Metodos DatosTecnicos
 
 	/**
 	 * @return the fACTOR_CILINDRADA
@@ -79,18 +79,18 @@ public abstract class Vehiculo {
 	/**
 	 * @return the datosTecnicos
 	 */
-	public DatosTecnicosVehiculo getDatosTecnicos() {
-		return datosTecnicos;
+	public DatosTecnicosVehiculo getDatosTecnicosVehiculo() {
+		return datosTecnicosVehiculos;
 	}
 
+	/**
+	 * @param datosTecnicos
+	 */
 	private void setDatosTecnicosVehiculo(DatosTecnicosVehiculo datosTecnicos) {
-		// TODO Auto-generated method stub
+		this.datosTecnicosVehiculos = new DatosTecnicosVehiculo(datosTecnicos);
 
 	}
-
-	public void setDatosTecnicosVehiculos(DatosTecnicosVehiculo datosTecnicosVehiculos) {
-
-	}
+	// set (disponibilidad,matricula,modelo,
 
 	/**
 	 * @param disponible
@@ -102,7 +102,6 @@ public abstract class Vehiculo {
 
 	/**
 	 * @param matricula
-	 *            the matricula to set
 	 */
 	private void setMatricula(String matricula) {
 
@@ -122,10 +121,10 @@ public abstract class Vehiculo {
 	 */
 	private void setMarca(String marca) {
 
-		// if (marca!=null && marca.equals(""))
+		if(marca!=null && !marca.equals(""))
 		this.marca = marca;
-		// else
-		// throw new ExcepcionAlquilerVehiculos("La marca no es valida");
+		 else
+		throw new ExcepcionAlquilerVehiculos("La marca no es valida");
 	}
 
 	/**
@@ -134,15 +133,14 @@ public abstract class Vehiculo {
 	 */
 	private void setModelo(String modelo) {
 
-		// if (modelo!=null && modelo.equals(""))
+		if (modelo!=null && !modelo.equals(""))
 		this.modelo = modelo;
-		// else
-		// throw new ExcepcionAlquilerVehiculos("El modelo no es valido");
+		 else
+		 throw new ExcepcionAlquilerVehiculos("El modelo no es valido");
 	}
 
 	// Metodo para comprobar matricula usando expresión regular
 	private boolean compruebaMatricula(String matricula) {
-
 		boolean matriculaValida = false;
 
 		Pattern matriculaPatron = Pattern.compile("[0-9]{4}[B-DF-HJ-NP-TV-Z]{3}");
@@ -152,10 +150,8 @@ public abstract class Vehiculo {
 
 		if (matriculaValida) {
 			System.out.println("La matricula  es correcta");
-
 		} else {
 			System.out.println("La matricula es incorrecta ");
-
 		}
 
 		return matriculaValida;
@@ -202,7 +198,7 @@ public abstract class Vehiculo {
 	public String toString() {
 		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", disponible="
 				+ disponible + ", FACTOR_CILINDRADA=" + FACTOR_CILINDRADA + ", FACTOR_NUMERO_PLAZAS="
-				+ FACTOR_NUMERO_PLAZAS + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicos + "]";
+				+ FACTOR_NUMERO_PLAZAS + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicosVehiculos + "]";
 	}
 
 }

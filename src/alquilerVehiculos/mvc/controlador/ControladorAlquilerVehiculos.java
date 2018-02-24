@@ -10,15 +10,15 @@ import alquilerVehiculos.mvc.vista.IUTextual;
 public class ControladorAlquilerVehiculos {
 
 	// atributos
-	private AlquilerVehiculos modelo;
-	private IUTextual vista;
+	 AlquilerVehiculos modelo;
+	 IUTextual vista;
 
 	// constructor
 	/**
 	 * @param modelo
 	 * @param vista
 	 */
-	
+
 	public ControladorAlquilerVehiculos(AlquilerVehiculos modelo, IUTextual vista) {
 		this.vista = vista;
 		this.modelo = modelo;
@@ -27,12 +27,16 @@ public class ControladorAlquilerVehiculos {
 
 	// metodos de controlador
 
+	/**
+	 * llama a metoso de comenzar y datos prueba alquilerVehiculos
+	 */
 	public void comenzar() {
+		
+		modelo.anadirDatosPrueba();
 		vista.comenzar();
 	}
 
-	
-	// metodos de cliente Cliente 
+	// metodos de cliente Cliente
 	/**
 	 * @param cliente
 	 */
@@ -63,14 +67,14 @@ public class ControladorAlquilerVehiculos {
 	}
 
 	// metodos Vehiculos
-	
+
 	/**
 	 * @param vehiculo
 	 * @param tipoVehiculo
 	 */
 	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
-        modelo.anadirVehiculo(vehiculo, tipoVehiculo);
-    }
+		modelo.anadirVehiculo(vehiculo, tipoVehiculo);
+	}
 
 	/**
 	 * @param matricula
@@ -83,6 +87,7 @@ public class ControladorAlquilerVehiculos {
 	 * @param matricula
 	 * @return
 	 */
+	
 	public Vehiculo buscarVehiculo(String matricula) {
 		return modelo.buscarVehiculo(matricula);
 	}
@@ -101,7 +106,7 @@ public class ControladorAlquilerVehiculos {
 	 */
 	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
 		modelo.abrirAlquiler(cliente, vehiculo);
-		
+
 	}
 
 	/**
@@ -117,11 +122,10 @@ public class ControladorAlquilerVehiculos {
 	public Alquiler[] obtenerAlquiler() {
 		return modelo.obtenerAlquileres();
 	}
-	
-	
+
 	public void anadirDatosPrueba() {
 		modelo.anadirDatosPrueba();
-		
+
 	}
 
 }

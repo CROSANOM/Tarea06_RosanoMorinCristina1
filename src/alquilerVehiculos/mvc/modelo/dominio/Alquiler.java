@@ -3,14 +3,15 @@ package alquilerVehiculos.mvc.modelo.dominio;
 import java.text.SimpleDateFormat;
 import java.util.Date;// instanciar la clase Fecha y acceder a sus metodos
 
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
-
+import alquilerVehiculos.mvc.modelo.dominio.*;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 
 /**
  * @author crosanom
  *
  */
+
 
 public class Alquiler {
 	// atributos de la clase Alquiler.
@@ -34,7 +35,7 @@ public class Alquiler {
 		if (vehiculo.getDisponible()) {
 			vehiculo.setDisponible(false);// vehiculo no disponible
 			alquilerAbierto = true;
-			SetTurismo(vehiculo);
+			SetVehiculo(vehiculo);
 			SetCliente(cliente);
 			fecha = new Date();
 			dias = 0;
@@ -49,7 +50,7 @@ public class Alquiler {
  // constructor copia 
 	public Alquiler(Alquiler alquiler) {
 
-		vehiculo = alquiler.getTurismo();
+		vehiculo = alquiler.getVehiculo();
 		cliente = alquiler.getCliente();
 		dias = alquiler.getDias();
 		fecha = alquiler.getFecha();
@@ -62,8 +63,11 @@ public class Alquiler {
 		return new Cliente (cliente);
 	}
 
-	public Vehiculo getTurismo() {
-		return new 	Vehiculo (vehiculo);
+	/**
+	 * @return the vehiculo
+	 */
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
 
 	public Date getFecha() {
@@ -99,11 +103,9 @@ public class Alquiler {
 
 	// getPrecio
 	public double getPrecio() { // obtener el precioDia segun regla de negocio
-		return PRECIO_DIA * dias + vehiculo.getFACTOR_CILINDRADA() / 100;
+		return PRECIO_DIA * dias + vehiculo.getDatosTecnicosVehiculo().getCilindrada() / 100;
 	}
 
-	
-	
 	// obtenerEstadoAlquiler ( devuelve el estado ) 
 	
 	public String obtenerEstadoAlquiler() {
@@ -122,9 +124,9 @@ public class Alquiler {
 	}
 
 	//
-	private void SetTurismo(Vehiculo vehiculo) {
+	private void SetVehiculo(Vehiculo vehiculo) {
 		if (vehiculo != null) {
-			this.vehiculo = new Vehiculo(vehiculo);
+			this.vehiculo =vehiculo;
 		} else {
 			throw new ExcepcionAlquilerVehiculos("El alquiler necesita un vehiculo, no hay vehiculo");
 		}

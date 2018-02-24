@@ -1,4 +1,4 @@
-package alquilerVehiculos.mvc.dominio.vehiculo;
+package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
