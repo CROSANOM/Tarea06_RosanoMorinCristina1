@@ -5,6 +5,8 @@ import java.util.Date;// instanciar la clase Fecha y acceder a sus metodos
 
 import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 
+
+
 /**
  * @author crosanom
  *
@@ -61,7 +63,7 @@ public class Alquiler {
 	}
 
 	public Vehiculo getTurismo() {
-		return new Vehiculo (vehiculo);
+		return new 	Vehiculo (vehiculo);
 	}
 
 	public Date getFecha() {

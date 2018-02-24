@@ -51,7 +51,6 @@ public abstract class Vehiculo {
 	// metodos abstract
 
 	public abstract double getPrecioEspecifico();
-
 	public abstract TipoVehiculo getTipoVehiculo();
 
 	// get datos tecnicos
@@ -69,8 +68,6 @@ public abstract class Vehiculo {
 	public double getFACTOR_NUMERO_PLAZAS() {
 		return getFACTOR_NUMERO_PLAZAS();
 	}
-
-	
 
 	/**
 	 * @return the fACTOR_PMA

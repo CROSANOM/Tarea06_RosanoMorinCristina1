@@ -17,7 +17,7 @@ public class Clientes {
 		clientes = new Cliente[MAX_CLIENTES];
 	}
 
-	//
+	//getClientes ( se usa return de obtenerClientes ) 
 
 	public Cliente[] getClientes() {
 		return clientes.clone();
@@ -50,6 +50,8 @@ public class Clientes {
 		return indice < clientes.length;
 	}
 
+	// metodo Borrar Cliente  (buscarIndice, indiceNoSuperaTamano,desplazarUnaPosiciónHaciaIzquierda)
+	
 	public void borrarCliente(String dni) {
 		int indice = buscarIndiceCliente(dni);
 		if (indiceNoSuperaTamano(indice)) {

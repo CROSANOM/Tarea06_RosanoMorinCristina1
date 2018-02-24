@@ -1,9 +1,9 @@
 package alquilerVehiculos.mvc.dominio.vehiculo;
 
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
-import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 
 
 /**
@@ -45,13 +45,7 @@ public  class Vehiculo {
 
 	}
 
-//	// metodos abstract
-//
-//	public abstract double getPrecioEspecifico();
-//
-//	public abstract TipoVehiculo getTipoVehiculo();
 
-	// get datos tecnicos
 
 	/**
 	 * @return the fACTOR_CILINDRADA

@@ -43,7 +43,7 @@ public class Cliente {
 		identificador = cliente.getIdentificador();
 	}
 
-	// getters and setters
+	// getters
 
 	/**
 	 * @return the nombre
@@ -73,13 +73,13 @@ public class Cliente {
 		return direccionPostal;
 	}
 
-	// set + tarde se modifica en base a norma de negocio
+	// setter
 	/**
 	 * @param nombre
 	 *            the nombre to set
 	 */
 	private void setNombre(String nombre) {
-		if (nombre != null && !nombre.equals(" "))
+		if (nombre != null && !nombre.equals(""))
 			this.nombre = nombre;
 		else
 			throw new ExcepcionAlquilerVehiculos("El nombre no es válido");
@@ -104,21 +104,19 @@ public class Cliente {
 		this.direccionPostal = direccionPostal;
 	}
 
-	// metodo compruebaDni
-
 	private boolean compruebaDni(String dni) {
-		
+
 		boolean dniValidado = false; // declara variable que contendra valor emparejador.matches
 		Pattern dniPatron = Pattern.compile("[0-9A-Z][0-9]{7}[A-Z]");/* expresionRegular */
 		Matcher emparejador = dniPatron.matcher(dni);
 		dniValidado = emparejador.matches(); // se guarda el resultado del metodo emparejador.matches en una variable
-
 		return dniValidado;
 
 	}
-	
+
 	private void setIdentificador() {
-		identificador = ultimoIdentificador++;
+		ultimoIdentificador++;
+		identificador = ultimoIdentificador;
 	}
 
 	/*

@@ -1,7 +1,6 @@
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
 import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 
 public class Turismo extends Vehiculo {
 

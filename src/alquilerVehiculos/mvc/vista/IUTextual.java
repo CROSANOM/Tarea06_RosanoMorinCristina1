@@ -2,12 +2,12 @@ package alquilerVehiculos.mvc.vista;
 
 import alquilerVehiculos.modelo.AlquilerVehiculos;
 import alquilerVehiculos.mvc.controlador.ControladorAlquilerVehiculos;
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.vista.utilidades.Consola;
 import alquilerVehiculos.mvc.vista.utilidades.Entrada;
 
@@ -26,7 +26,7 @@ public class IUTextual {
 	// SetControlado(Controlador )
 
 	public void setControlador(ControladorAlquilerVehiculos controlador) {
-		this.controlador=controlador;
+		this.controlador = controlador;
 
 	}
 
@@ -46,21 +46,6 @@ public class IUTextual {
 	public void salir() {
 		System.out.println("Hasta Pronto, gracias");
 	}
-
-	// metodo de alquileres
-
-	// ListarAquileres
-	public static void listarAlquileres(AlquilerVehiculos miAlquiler) {
-		System.out.println("\nListado de Alquileres");
-		System.out.println("---------------------");
-		for (Alquiler alquiler : miAlquiler.obtenerAlquileres()) {
-			if (alquiler != null)
-				System.out.println(
-						"Estos son los alquileres:\n" + alquiler + "ver los alquileres" + miAlquiler.toString());
-		}
-	}
-
-
 
 	// Metodos de Vehiculos
 
@@ -94,24 +79,18 @@ public class IUTextual {
 			System.out.printf("ERROR: %s%n%n", e.getMessage());
 		}
 	}
-			
-	
-	
-	public void anadirVehiculo() {
-        Consola.mostrarCabecera("Añadir vehiculo");
-        Vehiculo vehiculo = Consola.leerVehiculo();
-        try {
-            controlador.anadirVehiculo(vehiculo, tipoVehiculo);
-            System.out.println("Vehiculo añadido satisfactoriamente\n");
-        } catch (ExcepcionAlquilerVehiculos e) {
-            System.out.printf("ERROR: %s%n%n", e.getMessage());
-        }
-    }
 
-	
-	
-	
-	
+	public void anadirVehiculo() {
+		Consola.mostrarCabecera("Añadir vehiculo");
+		Vehiculo vehiculo = Consola.leerVehiculo();
+		try {
+			controlador.anadirVehiculo(vehiculo, tipoVehiculo);
+			System.out.println("Vehiculo añadido satisfactoriamente\n");
+		} catch (ExcepcionAlquilerVehiculos e) {
+			System.out.printf("ERROR: %s%n%n", e.getMessage());
+		}
+	}
+
 	// metodos de Clientes
 
 	// listar
@@ -157,8 +136,7 @@ public class IUTextual {
 		}
 	}
 
-	// metodos de alquiler ( Consola.mostrarCabecera (String) | Consola.leerdni(dni)
-	// | Consola.leerMatricula )
+	// metodo de alquileres
 
 	// AbriAlquiler
 	public void abrirAlquiler() {
@@ -180,11 +158,12 @@ public class IUTextual {
 		}
 
 	}
-// cerrarAlquiler
+
+	// cerrarAlquiler
 	public void cerrarAlquiler() {
 		Consola.mostrarCabecera("Cerrar Alquiler");
-		String matricula=Consola.leerMatricula();
-		Vehiculo vehiculo=controlador.buscarVehiculo(matricula);
+		String matricula = Consola.leerMatricula();
+		Vehiculo vehiculo = controlador.buscarVehiculo(matricula);
 		if (vehiculo == null)
 			System.out.println("ERROR: No existe un vehiculo con dicha matriÂ­cula\n");
 		else {
@@ -197,7 +176,7 @@ public class IUTextual {
 		}
 	}
 
-// 	ListarAlquiler
+	// ListarAlquiler
 	public void listarAlquileres() {
 		Consola.mostrarCabecera("Listar Alquiler");
 		for (Alquiler alquiler : controlador.obtenerAlquiler()) {
@@ -206,8 +185,11 @@ public class IUTextual {
 		}
 		System.out.println("");
 	}
-		
-		
+
+	// anadir DatosPrueba
+
+	public void anadirDatosPrueba() {
+
 	}
 
-
+}

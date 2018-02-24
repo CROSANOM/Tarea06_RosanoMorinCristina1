@@ -4,7 +4,6 @@
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
 import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 
 /**

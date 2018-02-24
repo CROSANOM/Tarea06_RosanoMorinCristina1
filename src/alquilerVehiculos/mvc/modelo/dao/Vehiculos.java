@@ -2,8 +2,9 @@ package alquilerVehiculos.mvc.modelo.dao;
 
 import java.util.Arrays;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class Vehiculos {
 
@@ -20,10 +21,18 @@ public class Vehiculos {
 	}
 
 	// metodo anadir Vehiculo (buscarPrimerIndiceLibre,indiceNosuperaTamaño)
-	public void anadirVehiculo(Vehiculo vehiculo) {
+	// 	Ahora anadirVehiculo incluye tipoVehiculo 
+	/**
+	 * @param vehiculo
+	 * @param tipoVehiculo
+	 */
+	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);
 		if (indiceNoSuperaTamano(indice))
-			vehiculos[indice] = new Vehiculo(vehiculo);
+			/*
+			 * Modificamos se llama clase abstracta getInstancia y acceden atributos de vehiculo
+			 */
+			vehiculos[indice] =  tipoVehiculo.getInstancia(vehiculo.getMatricula(), vehiculo.getMarca(), vehiculo.getModelo(), vehiculo.getDatosTecnicos());
 		else
 			throw new ExcepcionAlquilerVehiculos("El array de  vehiculos esta lleno.");
 	}
@@ -77,14 +86,14 @@ public class Vehiculos {
 		}
 	}
 
-	// Metodo buscarTurismo ( buscarIndice,indiceNoSupera)
-	public Vehiculo buscarVehiculo(String matricula) {
-		int indice = buscarIndiceVehiculo(matricula);
-		if (indiceNoSuperaTamano(indice))
-			return new Vehiculo(vehiculos[indice]);
-		else
-			return null;
-	}
+//	// Metodo buscarTurismo ( buscarIndice,indiceNoSupera)
+//	public Vehiculo buscarVehiculo(String matricula) {
+//		int indice = buscarIndiceVehiculo(matricula);
+//		if (indiceNoSuperaTamano(indice))
+//			return new Vehiculo(vehiculos[indice]);
+//		else
+//			return null;
+//	}
 
 	/*
 	 * (non-Javadoc)

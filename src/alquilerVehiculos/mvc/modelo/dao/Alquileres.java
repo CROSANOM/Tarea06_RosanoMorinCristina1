@@ -2,15 +2,15 @@ package alquilerVehiculos.mvc.modelo.dao;
 
 import java.util.Arrays;
 
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
 public class Alquileres {
 
 	// atributos
-	
+
 	private final int MAX_ALQUILERES = 5;
 	private Alquiler[] alquileres;
 
@@ -20,8 +20,6 @@ public class Alquileres {
 	}
 
 	// get alquiler
-
-	
 
 	/**
 	 * @return the alquileres
@@ -44,7 +42,7 @@ public class Alquileres {
 
 	// abrir alquiler (buscarIndiceLibre, indiceNoSupera)
 
-	public void abrirAlquiler (Cliente cliente, Vehiculo vehiculo) {
+	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
 		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);// indiceConAlquiler
 		if (indiceNoSuperaTamano(indice)) {
 			alquileres[indice] = new Alquiler(cliente, vehiculo);
@@ -53,7 +51,6 @@ public class Alquileres {
 		}
 	}
 
-	
 	// private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo turismo)
 	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
@@ -88,8 +85,9 @@ public class Alquileres {
 	private int buscarIndiceAlquilerAbierto(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontradoAlquiler = false;
-		while (indiceNoSuperaTamano(indice) && !encontradoAlquiler && alquileres[indice] != null) {
-			if (alquileres[indice].getTurismo().getMatricula().equals(vehiculo.getMatricula()))
+		while (indiceNoSuperaTamano(indice) && !encontradoAlquiler) {
+			if (alquileres[indice].getTurismo().getMatricula().equals(vehiculo.getMatricula())
+					&& alquileres[indice] != null && alquileres[indice].getDias() == 0)
 				encontradoAlquiler = true;
 			else
 				indice++;
@@ -98,7 +96,9 @@ public class Alquileres {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -106,93 +106,4 @@ public class Alquileres {
 		return "Alquileres [MAX_ALQUILERES=" + MAX_ALQUILERES + ", alquileres=" + Arrays.toString(alquileres) + "]";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	// public void abrirAlquiler(Cliente cliente, Vehiculo turismo) {
-	//
-	// int posicion = 0;
-	// boolean posicionEncontrada = false;
-	//
-	// // Si el vehiculo esta disponible se busca hueco en array.
-	//
-	// // Recorrer array mientras t < y exitahuecolibres
-	// while (posicion < alquileres.length && !posicionEncontrada) {
-	// // Si la posicion esta vacia se puede asignar el alquiler.
-	// if (alquileres[posicion] == null)
-	// posicionEncontrada = true;// PosicionEncontrada
-	// else if
-	// (alquileres[posicion].getTurismo().getMatricula().equals(turismo.getMatricula()))
-	// throw new ExcepcionAlquilerVehiculos("Ya existe un alquiler abierto");
-	// else
-	// turismo.setDisponible(false);
-	// posicion++;
-	// }
-	//
-	// // Si no ha encontrado un hueco vacio.
-	// if (posicionEncontrada) {
-	//
-	// // se crea un nuevo alquiler new ( llama constructor )
-	// alquileres[posicion] = new Alquiler(cliente, turismo);
-	// System.out.println(" Se ha creado el alquiler correctamente");
-	//
-	// }
-	//
-	// else
-	// throw new ExcepcionAlquilerVehiculos("El vehiculo no esta disponible.");
-	//
-	// }
-
-	// cerrar alquiler
-
-	/**
-	 * @param cliente
-	 * @param turismo
-	 */
-
-	//
-	// public void cerrarAlquiler(Cliente cliente, Vehiculo turismo) {
-	//
-	// int posicion = 0;
-	// boolean posicionEncontrada = false;
-	//
-	// // Buscar en el array posicion
-	// while (posicion < alquileres.length && !posicionEncontrada) {// abre while
-	// // comprobar si existe alquiler ( posicion array alquiler ! null )
-	// if (alquileres[posicion] != null &&
-	// // Comparar si alquiler existe ( dni buscado + matricula buscado=dni +
-	// matricula
-	// // array )
-	// (alquileres[posicion].getCliente().getDni().equals(cliente.getDni()) // dni
-	// cliente del alquiler =
-	// // dniClienteBuscar
-	// &&
-	// alquileres[posicion].getTurismo().getMatricula().equals(turismo.getMatricula())))
-	// { // matricula
-	//
-	// posicionEncontrada = true; // encontrado Alquiler
-	//
-	// } else // Si no es el alquiler, se pasa posicion.
-	//
-	// posicion++;
-	//
-	// } // cierre while
-	//
-	// if (posicionEncontrada) {
-	//
-	// alquileres[posicion].cerrar();
-	//
-	// System.out.println("Ha cerrado el aquiler correctamente");
-	//
-	// } else
-
-	// throw new ExcepcionAlquilerVehiculos("No se ha encontrado ningun alquiler
-	// abierto");
-	//
-	// }
 }

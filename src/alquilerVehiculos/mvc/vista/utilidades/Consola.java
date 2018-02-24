@@ -1,10 +1,10 @@
 package alquilerVehiculos.mvc.vista.utilidades;
 
 import alquilerVehiculos.mvc.dominio.vehiculo.DatosTecnicosVehiculo;
-import alquilerVehiculos.mvc.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
+import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.vista.Opcion;
 
 
@@ -75,7 +75,7 @@ public class Consola {
 		return matriculaLeer;
 	}
 
-
+// leerVehiculo
 	public static Vehiculo leerVehiculo() {
 	
 		Vehiculo nuevoVehiculo = null;
@@ -97,7 +97,6 @@ public class Consola {
 	}
 
 	// metodo acceder tipos de Vehiculo
-	
 	 public static int elegirTipoVehiculo() {
 	 int ordinalTipoVehiculo;
 	 do {
