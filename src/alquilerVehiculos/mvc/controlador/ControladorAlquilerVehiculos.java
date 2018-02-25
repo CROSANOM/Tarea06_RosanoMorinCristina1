@@ -1,16 +1,16 @@
 package alquilerVehiculos.mvc.controlador;
 
-import alquilerVehiculos.modelo.AlquilerVehiculos;
+import alquilerVehiculos.modelo.IModeloAlquilerVehiculos;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 import alquilerVehiculos.mvc.vista.IUTextual;
 
-public class ControladorAlquilerVehiculos {
+public class ControladorAlquilerVehiculos implements IControladorAlquilerVehiculo {
 
 	// atributos
-	 AlquilerVehiculos modelo;
+	 IModeloAlquilerVehiculos modelo;
 	 IUTextual vista;
 
 	// constructor
@@ -19,7 +19,7 @@ public class ControladorAlquilerVehiculos {
 	 * @param vista
 	 */
 
-	public ControladorAlquilerVehiculos(AlquilerVehiculos modelo, IUTextual vista) {
+	public ControladorAlquilerVehiculos(IModeloAlquilerVehiculos modelo, IUTextual vista) {
 		this.vista = vista;
 		this.modelo = modelo;
 		vista.setControlador(this);
@@ -27,9 +27,10 @@ public class ControladorAlquilerVehiculos {
 
 	// metodos de controlador
 
-	/**
-	 * llama a metoso de comenzar y datos prueba alquilerVehiculos
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#comenzar()
 	 */
+	@Override
 	public void comenzar() {
 		
 		modelo.anadirDatosPrueba();
@@ -37,92 +38,103 @@ public class ControladorAlquilerVehiculos {
 	}
 
 	// metodos de cliente Cliente
-	/**
-	 * @param cliente
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#anadirCliente(alquilerVehiculos.mvc.modelo.dominio.Cliente)
 	 */
+	@Override
 	public void anadirCliente(Cliente cliente) {
 		modelo.anadirCliente(cliente);
 	}
 
-	/**
-	 * @param dni
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#borrarCliente(java.lang.String)
 	 */
+	@Override
 	public void borrarCliente(String dni) {
 		modelo.borrarCliente(dni);
 	}
 
-	/**
-	 * @param dni
-	 * @return
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#buscarCliente(java.lang.String)
 	 */
+	@Override
 	public Cliente buscarCliente(String dni) {
 		return modelo.buscarCliente(dni);
 	}
 
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#obtenerClientes()
 	 */
+	@Override
 	public Cliente[] obtenerClientes() {
 		return modelo.ObtenerCliente();
 	}
 
 	// metodos Vehiculos
 
-	/**
-	 * @param vehiculo
-	 * @param tipoVehiculo
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#anadirVehiculo(alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo, alquilerVehiculos.mvc.modelo.dominio.vehiculo.TipoVehiculo)
 	 */
+	@Override
 	public void anadirVehiculo(Vehiculo vehiculo, TipoVehiculo tipoVehiculo) {
 		modelo.anadirVehiculo(vehiculo, tipoVehiculo);
 	}
 
-	/**
-	 * @param matricula
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#borrarVehiculo(java.lang.String)
 	 */
+	@Override
 	public void borrarVehiculo(String matricula) {
 		modelo.borrarVehiculo(matricula);
 	}
 
-	/**
-	 * @param matricula
-	 * @return
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#buscarVehiculo(java.lang.String)
 	 */
 	
+	@Override
 	public Vehiculo buscarVehiculo(String matricula) {
 		return modelo.buscarVehiculo(matricula);
 	}
 
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#obtenerVehiculo()
 	 */
+	@Override
 	public Vehiculo[] obtenerVehiculo() {
 		return modelo.ObtenerVehiculos();
 	}
 	// metodo de alquier
 
-	/**
-	 * @param cliente
-	 * @param vehiculo
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#abrirAlquiler(alquilerVehiculos.mvc.modelo.dominio.Cliente, alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo)
 	 */
+	@Override
 	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
 		modelo.abrirAlquiler(cliente, vehiculo);
 
 	}
 
-	/**
-	 * @param vehiculo
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#cerrarAlquiler(alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo)
 	 */
+	@Override
 	public void cerrarAlquiler(Vehiculo vehiculo) {
 		modelo.cerrarAlquiler(vehiculo);
 	}
 
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#obtenerAlquiler()
 	 */
+	@Override
 	public Alquiler[] obtenerAlquiler() {
 		return modelo.obtenerAlquileres();
 	}
 
+	/* (non-Javadoc)
+	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#anadirDatosPrueba()
+	 */
+	@Override
 	public void anadirDatosPrueba() {
 		modelo.anadirDatosPrueba();
 

@@ -1,7 +1,7 @@
 package alquilerVehiculos.mvc.vista;
 
 import alquilerVehiculos.modelo.AlquilerVehiculos;
-import alquilerVehiculos.mvc.controlador.ControladorAlquilerVehiculos;
+import alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo;
 import alquilerVehiculos.mvc.modelo.dominio.Alquiler;
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
 import alquilerVehiculos.mvc.modelo.dominio.DireccionPostal;
@@ -14,7 +14,7 @@ import alquilerVehiculos.mvc.vista.utilidades.Entrada;
 public class IUTextual {
 
 	// atributo
-	private ControladorAlquilerVehiculos controlador;
+	private IControladorAlquilerVehiculo controlador;
 	private Opcion vista;
 	private TipoVehiculo tipoVehiculo;
 
@@ -25,7 +25,7 @@ public class IUTextual {
 
 	// SetControlado(Controlador )
 
-	public void setControlador(ControladorAlquilerVehiculos controlador) {
+	public void setControlador(IControladorAlquilerVehiculo controlador) {
 		this.controlador = controlador;
 
 	}
@@ -82,8 +82,8 @@ public class IUTextual {
 
 	public void anadirVehiculo() {
 		Consola.mostrarCabecera("Añadir vehiculo");
-		int ordinalTipo=Consola.elegirTipoVehiculo();
-	
+		int ordinalTipo = Consola.elegirTipoVehiculo();
+
 		try {
 			Vehiculo vehiculo = Consola.leerVehiculo();
 			controlador.anadirVehiculo(vehiculo, TipoVehiculo.getTipoVehiculosSegunOrdinal(ordinalTipo));
@@ -140,8 +140,8 @@ public class IUTextual {
 
 	// metodo de alquileres
 
-	// AbriAlquiler 
-	
+	// AbriAlquiler
+
 	public void abrirAlquiler() {
 
 		Consola.mostrarCabecera("Abrir Alquiler");
