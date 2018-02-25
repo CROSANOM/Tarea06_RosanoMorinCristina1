@@ -126,6 +126,8 @@ public class ControladorAlquilerVehiculos implements IControladorAlquilerVehicul
 	/* (non-Javadoc)
 	 * @see alquilerVehiculos.mvc.controlador.IControladorAlquilerVehiculo#obtenerAlquiler()
 	 */
+
+	
 	@Override
 	public Alquiler[] obtenerAlquiler() {
 		return modelo.obtenerAlquileres();

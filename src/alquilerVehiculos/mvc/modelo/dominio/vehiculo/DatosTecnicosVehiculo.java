@@ -10,17 +10,13 @@ public class DatosTecnicosVehiculo {
 	private int numerosPlazas;
 	private int pma;
 
-	// Constructor Copia
+	// Constructor 3 parametros acceso a atrib con set
 
-	public DatosTecnicosVehiculo(DatosTecnicosVehiculo datosTecnicos) {
-
-	cilindrada=datosTecnicos.getCilindrada();
-	numerosPlazas=datosTecnicos.numerosPlazas;
-	pma=datosTecnicos.getNumerosPlazas();
-	}
-
-	// Constructor 3 parametros acceso a atrib con set 
-
+	/**
+	 * @param cilindrada
+	 * @param numerosPlazas
+	 * @param pma
+	 */
 	public DatosTecnicosVehiculo(int cilindrada, int numerosPlazas, int pma) {
 
 		setCilindrada(cilindrada);
@@ -28,11 +24,22 @@ public class DatosTecnicosVehiculo {
 		setPma(pma);
 	}
 
+	// Constructor Copia
+
+	/**
+	 * @param datosTecnicos
+	 */
+	public DatosTecnicosVehiculo(DatosTecnicosVehiculo datosTecnicos) {
+
+		cilindrada = datosTecnicos.getCilindrada();
+		numerosPlazas = datosTecnicos.numerosPlazas;
+		pma = datosTecnicos.getNumerosPlazas();
+	}
+
 	// setter
 
 	/**
 	 * @param cilindrada
-	 *            the cilindrada to set
 	 */
 	private void setCilindrada(int cilindrada) {
 		if (cilindrada > 0)
@@ -44,7 +51,6 @@ public class DatosTecnicosVehiculo {
 
 	/**
 	 * @param numerosPlazas
-	 *            the numerosPlazas to set
 	 */
 	private void setNumerosPlazas(int numerosPlazas) {
 		if (numerosPlazas > 0)
@@ -55,7 +61,6 @@ public class DatosTecnicosVehiculo {
 
 	/**
 	 * @param pma
-	 *            the pma to set
 	 */
 	private void setPma(int pma) {
 		if (pma > 0)
@@ -67,21 +72,21 @@ public class DatosTecnicosVehiculo {
 	// getters
 
 	/**
-	 * @return the cilindrada
+	 * @return cilindrada
 	 */
 	public int getCilindrada() {
 		return cilindrada;
 	}
 
 	/**
-	 * @return the numerosPlazas
+	 * @return numerosPlazas
 	 */
 	public int getNumerosPlazas() {
 		return numerosPlazas;
 	}
 
 	/**
-	 * @return the pma
+	 * @return pma
 	 */
 	public int getPma() {
 		return pma;

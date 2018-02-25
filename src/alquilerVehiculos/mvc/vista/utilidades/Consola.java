@@ -95,12 +95,12 @@ public class Consola {
 
 	// leerVehiculo
 	/**
-	 * @return vehiculo 
+	 * @return vehiculo
 	 */
 	public static Vehiculo leerVehiculo() {
-	
+
 		Vehiculo nuevoVehiculo = null;
-		int ordinalVehiculo=0;
+		int ordinalVehiculo = 0;
 		System.out.print("Matricula: ");
 		String matricula = Entrada.cadena();
 		System.out.print("Marca: ");
@@ -114,18 +114,17 @@ public class Consola {
 		int numeroPlazas = Entrada.entero();
 		System.out.print("pma: ");
 		int pma = Entrada.entero();
-		// instanciar un vehiculo 
-		
+		// instanciar un vehiculo
+
 		try {
-			
-			nuevoVehiculo=TipoVehiculo.getTipoVehiculosSegunOrdinal(ordinalVehiculo).getInstancia(matricula, marca, modelo, new DatosTecnicosVehiculo(cilindrada, numeroPlazas, pma));
-		}catch (ExcepcionAlquilerVehiculos e) {
+
+			nuevoVehiculo = TipoVehiculo.getTipoVehiculosSegunOrdinal(ordinalVehiculo).getInstancia(matricula, marca,
+					modelo, new DatosTecnicosVehiculo(cilindrada, numeroPlazas, pma));
+		} catch (ExcepcionAlquilerVehiculos e) {
 			System.out.printf("Error:  %s%n%n", e.getMessage());
 		}
-		return nuevoVehiculo;	
+		return nuevoVehiculo;
 	}
-	
-	
 
 	// metodo acceder tipos de Vehiculo
 	/**
@@ -140,6 +139,9 @@ public class Consola {
 		return ordinalTipoVehiculo;
 	}
 
+	/**
+	 * @return tiposVehiculos
+	 */
 	public static String obtenerTipoVehiculo() {
 		StringBuilder tiposVehiculo = new StringBuilder("");
 		for (TipoVehiculo tipoVehiculo : TipoVehiculo.values()) {

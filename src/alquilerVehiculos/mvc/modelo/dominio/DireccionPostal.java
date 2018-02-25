@@ -3,8 +3,7 @@ package alquilerVehiculos.mvc.modelo.dominio;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*Extrae la clase DireccionPostal de la clase Cliente y 
-  corrige todo lo que tengas que corregir para que todo siga funcionando correctamente  */
+/*Se Extrae de la clase Cliente */
 
 public class DireccionPostal {
 
@@ -13,6 +12,7 @@ public class DireccionPostal {
 	private String codigoPostal;
 
 	// Crear un constructor DireccionPostal
+
 	/**
 	 * @param calle
 	 * @param localidad
@@ -38,8 +38,11 @@ public class DireccionPostal {
 		codigoPostal = direccionPostal.getCodigoPostal();
 	}
 
-	// CompruebaCodigoPostal
+	// metodo setCodigoPostal(compruebaCodigoPostal)
 
+	/**
+	 * @param codigoPostal
+	 */
 	private void setCodigoPostal(String codigoPostal) {
 		if (compruebaCodigoPostal(codigoPostal))
 			this.codigoPostal = codigoPostal;
@@ -62,16 +65,6 @@ public class DireccionPostal {
 
 	}
 
-	/*
-	 * Punto6 : Añade los diferentes métodos set a dichas clases para que éstos
-	 * comprueben la validez de todos los atributos (por ejemplo, para las cadenas
-	 * debes comprobar que no sean nulas ni la cadena vacía). Estos métodos set se
-	 * llamarán desde el constructor y deberán tener la visibilidad adecuada (si
-	 * antes no podíamos modificar un atributo, ahora tampoco se deberá hacer).
-	 * También devuelve copias de atributos que no sean tipos primitivos y creálas
-	 * antes de asignarlas a un atributo en los métodos que lo necesiten. Comprueba
-	 * que todo sigue funcionando correctamente y haz un commit.
-	 */
 
 	/**
 	 * @param calle

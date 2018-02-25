@@ -9,19 +9,24 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 public class Vehiculos {
 
 	private Vehiculo[] vehiculos;
-	private final int MAX_VEHICULOS =10;
+	private final int MAX_VEHICULOS = 10;
 
 	// constructor
 	public Vehiculos() {
 		vehiculos = new Vehiculo[MAX_VEHICULOS];
 	}
 
+	/**
+	 * @return vehiculos ( copia )
+	 */
 	public Vehiculo[] getVehiculo() {
 		return vehiculos.clone();
 	}
 
-	// metodo anadir Vehiculo (buscarPrimerIndiceLibre,indiceNosuperaTamaño)
-	// Ahora anadirVehiculo incluye tipoVehiculo
+	/*
+	 * metodo anadir Vehiculo (buscarPrimerIndiceLibre,indiceNosuperaTamaño)
+	 */
+
 	/**
 	 * @param vehiculo
 	 * @param tipoVehiculo
@@ -39,10 +44,10 @@ public class Vehiculos {
 			throw new ExcepcionAlquilerVehiculos("El array de  vehiculos esta lleno.");
 	}
 
-	// metodo buscarPrimerIndiceLibre ( indiceNoSupera)
+	// metodo buscarPrimerIndiceLibre (indiceNoSupera)
 	/**
 	 * @param vehiculo
-	 * @return
+	 * @return indice
 	 */
 	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
@@ -51,13 +56,14 @@ public class Vehiculos {
 			if (vehiculos[indice] == null)
 				VehiculoEncontrado = true;
 			else if (vehiculos[indice].getMatricula().equals(vehiculo.getMatricula()))
-				throw new ExcepcionAlquilerVehiculos("Ya existe un turismo con esa matricula");
+				throw new ExcepcionAlquilerVehiculos("Ya existe un vehiculo con esa matricula");
 			else
 				indice++;
 		}
 		return indice;
 	}
 
+	// metodo indiceNoSuperaTamano
 	/**
 	 * @param indice
 	 * @return false o true
@@ -66,8 +72,7 @@ public class Vehiculos {
 		return indice < vehiculos.length;
 	}
 
-	// metodo de borrar Vehiculo a partir de indice
-	// (buscarIndiceTurismo (indice)/ indiceNosuperatamaño
+	/* metodo de borrar Vehiculo (buscarIndiceTurismo, indiceNosuperatamaño */
 
 	/**
 	 * @param matricula
@@ -81,6 +86,7 @@ public class Vehiculos {
 		}
 	}
 
+	// metodo buscarIndiceVehiculo
 	/**
 	 * @param matricula
 	 * @return indice del array donde se encuente
@@ -99,28 +105,28 @@ public class Vehiculos {
 		return vehiculoEncontrado ? indice : vehiculos.length;
 	}
 
-	// pasar al siguiente indice
+	// metodo desplazarUnaPosiciónHaciaIzquierda
+
+	/**
+	 * @param indice
+	 */
 	private void desplazarUnaPosicionHaciaIzquierda(int indice) {
 		for (int i = indice; i < vehiculos.length - 1 && vehiculos[i] != null; i++) {
 			vehiculos[i] = vehiculos[i + 1];
 		}
 	}
 
-	// Metodo buscarTurismo ( buscarIndice,indiceNoSupera)
+	/* Metodo buscarTurismo ( buscarIndice,indiceNoSupera) */
+
 	/**
 	 * @param matricula
 	 * @return Vehiculo
 	 */
 	public Vehiculo buscarVehiculo(String matricula) {
 		int indice = buscarIndiceVehiculo(matricula);
-		Vehiculo vehiculo = null;
-
 		if (indiceNoSuperaTamano(indice)) {
-
 			return (vehiculos[indice]);
-		}
-
-		else
+		} else
 			return null;
 	}
 

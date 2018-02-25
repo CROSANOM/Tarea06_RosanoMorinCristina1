@@ -104,6 +104,10 @@ public class Cliente {
 		this.direccionPostal = direccionPostal;
 	}
 
+	/**
+	 * @param dni
+	 * @return boolean 
+	 */
 	private boolean compruebaDni(String dni) {
 
 		boolean dniValidado = false; // declara variable que contendra valor emparejador.matches

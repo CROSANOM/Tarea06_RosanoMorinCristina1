@@ -2,10 +2,12 @@ package alquilerVehiculos.mvc.vista;
 
 import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
 import alquilerVehiculos.mvc.vista.IUTextual;
+
 // enum
 public enum Opcion {
-	
+
 	SALIR("Salir") {
+
 		public void ejecutar() {
 			vista.salir();
 		}
@@ -20,7 +22,7 @@ public enum Opcion {
 			vista.borrarCliente();
 		}
 	},
-	
+
 	BUSCAR_CLIENTE("Buscar Cliente") {
 		public void ejecutar() {
 			vista.buscarCliente();
@@ -32,11 +34,11 @@ public enum Opcion {
 		}
 	},
 	ANADIR_VEHICULO("Añadir vehiculo") {
-public void ejecutar() {
-		vista.anadirVehiculo();
+		public void ejecutar() {
+			vista.anadirVehiculo();
 		}
 	},
-	
+
 	BORRAR_VEHICULO("Borrar vehiculo") {
 		public void ejecutar() {
 			vista.borrarVehiculo();

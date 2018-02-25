@@ -27,6 +27,12 @@ public abstract class Vehiculo {
 
 	// Constructor ()
 
+	/**
+	 * @param matricula
+	 * @param marca
+	 * @param modelo
+	 * @param datosTecnicos
+	 */
 	public Vehiculo(String matricula, String marca, String modelo, DatosTecnicosVehiculo datosTecnicos) {
 
 		setMatricula(matricula);
@@ -38,6 +44,9 @@ public abstract class Vehiculo {
 
 	// constructor copia
 
+	/**
+	 * @param vehiculo
+	 */
 	public Vehiculo(Vehiculo vehiculo) {
 
 		matricula = vehiculo.getMatricula();
@@ -49,28 +58,34 @@ public abstract class Vehiculo {
 
 	// metodos abstract
 
+	/**
+	 * @return
+	 */
 	public abstract double getPrecioEspecifico();
 
+	/**
+	 * @return
+	 */
 	public abstract TipoVehiculo getTipoVehiculo();
 
 	// Metodos DatosTecnicos
 
 	/**
-	 * @return the fACTOR_CILINDRADA
+	 * @return factor_Cilindrada
 	 */
 	public double getFACTOR_CILINDRADA() {
 		return FACTOR_CILINDRADA;
 	}
 
 	/**
-	 * @return the fACTOR_NUMERO_PLAZAS
+	 * @return fACTOR_NUMERO_PLAZAS
 	 */
 	public double getFACTOR_NUMERO_PLAZAS() {
 		return getFACTOR_NUMERO_PLAZAS();
 	}
 
 	/**
-	 * @return the fACTOR_PMA
+	 * @return fACTOR_PMA
 	 */
 	public double getFACTOR_PMA() {
 		return FACTOR_PMA;
@@ -94,15 +109,17 @@ public abstract class Vehiculo {
 
 	/**
 	 * @param disponible
-	 *            the disponibilidad to set
 	 */
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
 
+	// SetMatricula (comprobarMatricula)
+
 	/**
 	 * @param matricula
 	 */
+
 	private void setMatricula(String matricula) {
 
 		// Comprobar Matricula
@@ -117,29 +134,33 @@ public abstract class Vehiculo {
 
 	/**
 	 * @param marca
-	 *            the marca to set
+	 *           
 	 */
 	private void setMarca(String marca) {
 
-		if(marca!=null && !marca.equals(""))
-		this.marca = marca;
-		 else
-		throw new ExcepcionAlquilerVehiculos("La marca no es valida");
+		if (marca != null && !marca.equals(""))
+			this.marca = marca;
+		else
+			throw new ExcepcionAlquilerVehiculos("La marca no es valida");
 	}
 
 	/**
 	 * @param modelo
-	 *            the modelo to set
+	 *           
 	 */
 	private void setModelo(String modelo) {
 
-		if (modelo!=null && !modelo.equals(""))
-		this.modelo = modelo;
-		 else
-		 throw new ExcepcionAlquilerVehiculos("El modelo no es valido");
+		if (modelo != null && !modelo.equals(""))
+			this.modelo = modelo;
+		else
+			throw new ExcepcionAlquilerVehiculos("El modelo no es valido");
 	}
 
 	// Metodo para comprobar matricula usando expresión regular
+	/**
+	 * @param matricula
+	 * @return
+	 */
 	private boolean compruebaMatricula(String matricula) {
 		boolean matriculaValida = false;
 
@@ -160,28 +181,28 @@ public abstract class Vehiculo {
 
 	// metodos getters
 	/**
-	 * @return the matricula
+	 * @return  matricula
 	 */
 	public String getMatricula() {
 		return matricula;
 	}
 
 	/**
-	 * @return the marca
+	 * @return  marca
 	 */
 	public String getMarca() {
 		return marca;
 	}
 
 	/**
-	 * @return the modelo
+	 * @return  modelo
 	 */
 	public String getModelo() {
 		return modelo;
 	}
 
 	/**
-	 * @return the disponibilidad
+	 * @return  disponibilidad
 	 */
 	public boolean getDisponible() {
 		return disponible;
@@ -198,7 +219,8 @@ public abstract class Vehiculo {
 	public String toString() {
 		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", disponible="
 				+ disponible + ", FACTOR_CILINDRADA=" + FACTOR_CILINDRADA + ", FACTOR_NUMERO_PLAZAS="
-				+ FACTOR_NUMERO_PLAZAS + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicosVehiculos + "]";
+				+ FACTOR_NUMERO_PLAZAS + ", FACTOR_PMA=" + FACTOR_PMA + ", datosTecnicos=" + datosTecnicosVehiculos
+				+ "]";
 	}
 
 }

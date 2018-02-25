@@ -1,6 +1,5 @@
 package alquilerVehiculos.mvc.modelo.dao;
 
-
 import java.util.Arrays;
 
 import alquilerVehiculos.mvc.modelo.dominio.Cliente;
@@ -17,28 +16,41 @@ public class Clientes {
 		clientes = new Cliente[MAX_CLIENTES];
 	}
 
-	//getClientes ( se usa return de obtenerClientes ) 
+	// getClientes ( se usa return de obtenerClientes )
 
+	/**
+	 * @return Clientes( copias )
+	 */
 	public Cliente[] getClientes() {
 		return clientes.clone();
 	}
-	
+	/*anadir Clientes (BuscarIndiceLibreComprobandoExistencia,
+	 indiceNoSuperaTamano)*/
+
+	/**
+	 * @param cliente
+	 */
+
 	public void anadirCliente(Cliente cliente) {
-	int 	indice= buscarPrimerIndiceLibreComprobandoExistencia(cliente);
+		int indice = buscarPrimerIndiceLibreComprobandoExistencia(cliente);
 		if (indiceNoSuperaTamano(indice))
 			clientes[indice] = new Cliente(cliente);
 		else
 			throw new ExcepcionAlquilerVehiculos("El array de clientes esta lleno.");
 	}
 
+	// metodo buscarPrimerIndiceLibreComprobandoExistencia
+	/**
+	 * @param cliente
+	 * @return indice
+	 */
 	private int buscarPrimerIndiceLibreComprobandoExistencia(Cliente cliente) {
 		int indice = 0;
 		boolean clienteEncontrado = false;
 		while (indiceNoSuperaTamano(indice) && !clienteEncontrado) {
 			if (clientes[indice] == null)
 				clienteEncontrado = true;
-			else 
-				if (clientes[indice].getDni().equals(cliente.getDni()))
+			else if (clientes[indice].getDni().equals(cliente.getDni()))
 				throw new ExcepcionAlquilerVehiculos("Ya existe un cliente con ese DNI");
 			else
 				indice++;
@@ -46,12 +58,23 @@ public class Clientes {
 		return indice;
 	}
 
+	// metodo indiceNoSuperaTamano
+
+	/**
+	 * @param indice
+	 * @return boolean
+	 */
 	private boolean indiceNoSuperaTamano(int indice) {
 		return indice < clientes.length;
 	}
 
-	// metodo Borrar Cliente  (buscarIndice, indiceNoSuperaTamano,desplazarUnaPosiciónHaciaIzquierda)
+	/*metodo Borrar Cliente (buscarIndice,
 	
+	 indiceNoSuperaTamano,desplazarUnaPosiciónHaciaIzquierda)*/
+
+	/**
+	 * @param dni
+	 */
 	public void borrarCliente(String dni) {
 		int indice = buscarIndiceCliente(dni);
 		if (indiceNoSuperaTamano(indice)) {
@@ -61,6 +84,12 @@ public class Clientes {
 		}
 	}
 
+	// metodo buscarIndiceCliente (indiceNoSuperaTamano)
+	/**
+	 * @param dni
+	 * @return indice
+	 */
+	
 	private int buscarIndiceCliente(String dni) {
 		int indice = 0;
 		boolean clienteEncontrado = false;
@@ -73,6 +102,10 @@ public class Clientes {
 		return clienteEncontrado ? indice : clientes.length;
 	}
 
+	// metodo desplazarUnaPosicionHaciaIzquierda
+	/**
+	 * @param indice
+	 */
 	private void desplazarUnaPosicionHaciaIzquierda(int indice) {
 		for (int i = indice; i < clientes.length - 1 && clientes[i] != null; i++) {
 			clientes[i] = clientes[i + 1];// desplar un indice
@@ -81,6 +114,12 @@ public class Clientes {
 			clientes[clientes.length - 1] = null;
 	}
 
+	/*buscarCliente (indiceNoSuperaTamano*/
+	
+	/**
+	 * @param dni
+	 * @return cliente
+	 */
 	public Cliente buscarCliente(String dni) {
 		int posicion = buscarIndiceCliente(dni);
 		if (indiceNoSuperaTamano(posicion))
@@ -89,7 +128,9 @@ public class Clientes {
 			return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -97,8 +138,4 @@ public class Clientes {
 		return "Clientes [clientes=" + Arrays.toString(clientes) + ", MAX_CLIENTES=" + MAX_CLIENTES + "]";
 	}
 
-	
-	
-	
-	
 }

@@ -19,12 +19,16 @@ public class IUTextual {
 	private TipoVehiculo tipoVehiculo;
 
 	// constructor
+
 	public IUTextual() {
 		Opcion.setVista(this);
 	}
 
 	// SetControlado(Controlador )
 
+	/**
+	 * @param controlador
+	 */
 	public void setControlador(IControladorAlquilerVehiculo controlador) {
 		this.controlador = controlador;
 
@@ -50,6 +54,7 @@ public class IUTextual {
 	// Metodos de Vehiculos
 
 	// ListarVehiculos
+
 	public void listarVehiculos() {
 		Consola.mostrarCabecera("Listar Vehiculos");
 		for (Vehiculo vehiculo : controlador.obtenerVehiculo()) {
@@ -141,6 +146,7 @@ public class IUTextual {
 	// metodo de alquileres
 
 	// AbriAlquiler
+
 
 	public void abrirAlquiler() {
 

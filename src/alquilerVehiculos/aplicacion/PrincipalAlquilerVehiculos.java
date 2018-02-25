@@ -10,6 +10,10 @@ import alquilerVehiculos.mvc.vista.IUTextual;
 public class PrincipalAlquilerVehiculos {
 
 	// metodo main 
+	
+	/**
+	 * @param args llama a Interfaz y al metodo comenzar
+	 */
 	public static void main(String[] args) {
 		IModeloAlquilerVehiculos modelo = new AlquilerVehiculos();
 		IUTextual vista = new IUTextual();

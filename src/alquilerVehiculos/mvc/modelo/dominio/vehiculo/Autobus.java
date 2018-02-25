@@ -5,9 +5,10 @@ public class Autobus extends Vehiculo {
 	// atributo
 	double precioEspecificoAutobus = 0;
 
-	// constructor:
-	// public Vehiculo(String matricula, String marca, String modelo,
-	// DatosTecnicosVehiculo datosTecnicos) {
+	/*
+	 * constructor: public Vehiculo(String matricula, String marca, String modelo,
+	 * DatosTecnicosVehiculo datosTecnicos)
+	 */
 
 	/**
 	 * @param matricula
@@ -15,6 +16,7 @@ public class Autobus extends Vehiculo {
 	 * @param modelo
 	 * @param datosTecnicos
 	 */
+
 	public Autobus(String matricula, String marca, String modelo, DatosTecnicosVehiculo datosTecnicos) {
 		super(matricula, marca, modelo, datosTecnicos);
 
@@ -26,10 +28,22 @@ public class Autobus extends Vehiculo {
 		super(vehiculo);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo#getTipoVehiculo()
+	 */
 	public TipoVehiculo getTipoVehiculo() {
 
 		return TipoVehiculo.AUTOBUS;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo#getPrecioEspecifico()
+	 */
 
 	public double getPrecioEspecifico() {
 

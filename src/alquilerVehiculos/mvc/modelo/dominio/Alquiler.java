@@ -6,12 +6,10 @@ import java.util.Date;// instanciar la clase Fecha y acceder a sus metodos
 import alquilerVehiculos.mvc.modelo.dominio.*;
 import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 
-
 /**
  * @author crosanom
  *
  */
-
 
 public class Alquiler {
 	// atributos de la clase Alquiler.
@@ -46,8 +44,11 @@ public class Alquiler {
 		}
 
 	}// f const
-	
- // constructor copia 
+
+	// constructor copia
+	/**
+	 * @param alquiler
+	 */
 	public Alquiler(Alquiler alquiler) {
 
 		vehiculo = alquiler.getVehiculo();
@@ -59,26 +60,41 @@ public class Alquiler {
 
 	// getters
 
+	/**
+	 * @return cliente 
+	 */
 	public Cliente getCliente() {
-		return new Cliente (cliente);
+		return new Cliente(cliente);
 	}
 
 	/**
-	 * @return the vehiculo
+	 * @return vehiculo
 	 */
+	
 	public Vehiculo getVehiculo() {
 		return vehiculo;
 	}
 
+	/**
+	 * @return fecha 
+	 */
 	public Date getFecha() {
 		return fecha;
 	}
 
+	/**
+	 * @return  int numero dias 
+	 */
 	public int getDias() {
 		return dias;
 	}
 
 	// Calculo de dias.
+	/**
+	 * @param fechaFin
+	 * @param fechaInicio
+	 * @return int dias 
+	 */
 	private int difDias(Date fechaFin, Date fechaInicio) {
 		long milisegundos = fechaFin.getTime() - fechaInicio.getTime(); // ojo getTime devuelve los milisegundos
 		long dias = milisegundos / MS_DIA;
@@ -86,35 +102,38 @@ public class Alquiler {
 	}
 
 	// metodos alquiler cerrar-GetPrecio- obtenerEstadoAlquiler
-    
-	//cerrar
+
+	// cerrar alquiler ( difDias) y poner vehiculo pasa a estar disponible 
 	public void cerrar() {
 		Date fechaActual = new Date();
-		dias = difDias(fechaActual, fecha); // devuelve un numero de dias
-		if (dias == 0) { // si la di ferencia de restar la fecha de alquiler y la de entrada es cero
-			dias = 1;
-		} else {
-			dias = dias + 1; // si se ha alquilado durante mas de un dia la diferencia de dias sera
-			// difDias+1
-		}
-		this.vehiculo.setDisponible(true);
-		obtenerEstadoAlquiler();// pone vehiculo disponible
+		dias = difDias(fechaActual, fecha);
+		alquilerAbierto = false;
+		vehiculo.setDisponible(false);
 	}
 
-	// getPrecio
+	
+	/**
+	 * @return precioDia segun TipoVehiculo ( ligadura dinamica ) 
+	 */
 	public double getPrecio() { // obtener el precioDia segun regla de negocio
 		return PRECIO_DIA * dias + vehiculo.getDatosTecnicosVehiculo().getCilindrada() / 100;
 	}
 
-	// obtenerEstadoAlquiler ( devuelve el estado ) 
-	
+	// obtenerEstadoAlquiler ( devuelve el estado )
+
+	/**
+	 * @return estado del Alquiler
+	 */
 	public String obtenerEstadoAlquiler() {
-		String estado= alquilerAbierto ? "Abierto":"Cerrado";
+		String estado = alquilerAbierto ? "Abierto" : "Cerrado";
 		return estado;
 	}
-	
-	// setter Cliente y de Vehiculos ( se usa mas adelante )
 
+	// setters Cliente y de Vehiculos ( se usa mas adelante )
+
+	/**
+	 * @param cliente
+	 */
 	private void SetCliente(Cliente cliente) {
 
 		if (cliente != null)
@@ -123,10 +142,13 @@ public class Alquiler {
 			throw new ExcepcionAlquilerVehiculos("El alquiler necesita un cliente");
 	}
 
-	//
+	
+	/**
+	 * @param vehiculo
+	 */
 	private void SetVehiculo(Vehiculo vehiculo) {
 		if (vehiculo != null) {
-			this.vehiculo =vehiculo;
+			this.vehiculo = vehiculo;
 		} else {
 			throw new ExcepcionAlquilerVehiculos("El alquiler necesita un vehiculo, no hay vehiculo");
 		}

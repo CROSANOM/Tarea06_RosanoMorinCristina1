@@ -9,6 +9,7 @@ import alquilerVehiculos.mvc.modelo.dominio.ExcepcionAlquilerVehiculos;
  * @author crosanom
  *
  */
+
 public enum TipoVehiculo {
 
 	TURISMO("Turismo") {
@@ -34,14 +35,24 @@ public enum TipoVehiculo {
 
 	private String tipoVehiculo;
 
+	/**
+	 * @param tipoVehiculo
+	 */
 	private TipoVehiculo(String tipoVehiculo) {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Enum#toString()
+	 */
 	public String toString() {
 		return tipoVehiculo;
 	}
 
+	/**
+	 * @param ordinal
+	 * @return Ordinal que coincide con tipo Vehiculo
+	 */
 	public static TipoVehiculo getTipoVehiculosSegunOrdinal(int ordinal) {
 		if (esOrdinalValido(ordinal))
 			return values()[ordinal];
@@ -49,12 +60,23 @@ public enum TipoVehiculo {
 			throw new ExcepcionAlquilerVehiculos("Ordinal del tipo de Vehiculo no válido");
 	}
 
+	/**
+	 * @param ordinal
+	 * @return boolean 
+	 */
 	public static boolean esOrdinalValido(int ordinal) {
 		return (ordinal >= 0 && ordinal <= values().length - 1);
 	}
 
 	// metodo abstracto
 
+	/**
+	 * @param matricula
+	 * @param marca
+	 * @param modelo
+	 * @param datosTecnicosVehiculo
+	 * @return instancia Vehiculo ? 
+	 */
 	public abstract Vehiculo getInstancia(String matricula, String marca, String modelo,
 			DatosTecnicosVehiculo datosTecnicosVehiculo);
 

@@ -8,7 +8,7 @@ import alquilerVehiculos.mvc.modelo.dominio.vehiculo.Vehiculo;
 public interface IControladorAlquilerVehiculo {
 
 	/**
-	 * llama a metoso de comenzar y datos prueba alquilerVehiculos
+	 * llama a metodo de comenzar y datos prueba alquilerVehiculos
 	 */
 	void comenzar();
 
@@ -47,7 +47,7 @@ public interface IControladorAlquilerVehiculo {
 
 	/**
 	 * @param matricula
-	 * @return
+	 * @return  
 	 */
 
 	Vehiculo buscarVehiculo(String matricula);

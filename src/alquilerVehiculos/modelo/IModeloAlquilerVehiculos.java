@@ -36,7 +36,7 @@ public interface IModeloAlquilerVehiculos {
 	Vehiculo[] ObtenerVehiculos();
 
 	/**
-	 * @return
+	 * @return 
 	 */
 	Alquiler[] obtenerAlquileres();
 

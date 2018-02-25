@@ -35,12 +35,12 @@ public class Alquileres {
 		return MAX_ALQUILERES;
 	}
 
+	// abrir alquiler (buscarIndiceLibre, indiceNoSupera)
+	
 	/**
 	 * @param cliente
 	 * @param vehiculo
 	 */
-
-	// abrir alquiler (buscarIndiceLibre, indiceNoSupera)
 
 	public void abrirAlquiler(Cliente cliente, Vehiculo vehiculo) {
 		int indice = buscarPrimerIndiceLibreComprobandoExistencia(vehiculo);// indiceConAlquiler
@@ -51,7 +51,12 @@ public class Alquileres {
 		}
 	}
 
-	// private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo)
+	// Metodo buscarPrimerIndiceLibreComprobandoExistencia (noSuperaTamano) 
+	
+	/**
+	 * @param vehiculo
+	 * @return indice
+	 */
 	private int buscarPrimerIndiceLibreComprobandoExistencia(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontrado = false;
@@ -68,21 +73,36 @@ public class Alquileres {
 		return indice;
 	}
 
-	// private boolean indiceNoSuperaTamaño( int indice)
+	// metodo indiceNoSuperaTamaño(int indice)
+	/**
+	 * @param indice
+	 * @return boolean 
+	 */
 	private boolean indiceNoSuperaTamano(int indice) {
 		return indice < alquileres.length;
 	}
 
+	// cerrar alquiler pasandole solo un vehiculo (buscarIndiceAlquilerAbierto , indiceNoSuperaTamano)
+
+	/**
+	 * @param vehiculo
+	 */
 	public void cerrarAlquiler(Vehiculo vehiculo) {
-		int indice = buscarIndiceAlquilerAbierto(vehiculo);
+		int indice = buscarAlquilerAbierto(vehiculo);
 		if (indiceNoSuperaTamano(indice))
 			alquileres[indice].cerrar();
 		else
 			throw new ExcepcionAlquilerVehiculos("No hay ningun alquiler Abierto");
 	}
 
-	// private int buscarIndiceAlquilerAbierto(Vehiculo turismo, Cliente cliente)
-	private int buscarIndiceAlquilerAbierto(Vehiculo vehiculo) {
+	// private int buscarAlquilerAbierto(indiceNoSuperaTamaño)
+	
+	/**
+	 * @param vehiculo
+	 * @return
+	 */
+
+	private int buscarAlquilerAbierto(Vehiculo vehiculo) {
 		int indice = 0;
 		boolean encontradoAlquiler = false;
 		while (indiceNoSuperaTamano(indice) && !encontradoAlquiler) {

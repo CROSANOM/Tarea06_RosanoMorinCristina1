@@ -1,7 +1,7 @@
 
 package alquilerVehiculos.mvc.modelo.dominio.vehiculo;
 
-public class DeCarga extends Vehiculo {
+public class DeCarga extends Vehiculo {  //  hereda de Vehiculo
 
 	// atributo
 

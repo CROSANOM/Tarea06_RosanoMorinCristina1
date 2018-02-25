@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package alquilerVehiculos.mvc.modelo.dominio;
 
 /**
